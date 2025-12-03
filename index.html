@@ -128,6 +128,481 @@ references go here:
     </p>
     
 </body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        
+        .chart-container {
+            width: 600px;
+            height: 400px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        
+        button {
+            padding: 10px 15px;
+            margin: 10px 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        input[type="text"] {
+            padding: 8px;
+            margin: 10px 0;
+            width: 250px;
+        }
+        
+        #colorButton {
+            padding: 15px 25px;
+            font-size: 16px;
+        }
+        
+        #generateButton {
+            background-color: #008CBA;
+        }
+        
+        #alertButton {
+            background-color: #f44336;
+        }
+        
+        hr {
+            margin: 30px 0;
+            border: 1px solid #eee;
+        }
+        
+        #randomNumber {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin: 15px 0;
+        }
+        
+        #totalWordCount {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        
+        #last-updated {
+            font-family: monospace;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>ENG0018 Computer Laboratory - JavaScript Lab H3</h1>
+<h2>Introduction to JavaScript</h2>
+
+<hr>
+
+<!-- Section 1: Change Button Color -->
+<h3>LO 3.1: Embed JavaScript within HTML</h3>
+<p>Click the button below to change its color randomly:</p>
+<button id="colorButton">Click me to change colour</button>
+
+<hr>
+
+<!-- Section 2: Alert Input Text (Consolidation Task 1) -->
+<h3>Consolidation Task 1: Text Input Alert</h3>
+<p>Enter some text and click the button to see it in an alert:</p>
+<input type="text" id="textInput" placeholder="Enter text">
+<button id="alertButton">Show Alert</button>
+
+<hr>
+
+<!-- Section 3: Random Number Generator (Consolidation Task 2) -->
+<h3>Consolidation Task 2: Random Number Generator</h3>
+<p>Click the button to generate a random number between 1 and 10:</p>
+<button id="generateButton">Generate Random Number</button>
+<p id="randomNumber"></p>
+
+<hr>
+
+<!-- Section 4: Pie Chart - Daily Activities -->
+<h3>LO 3.2: Google Charts - Pie Chart</h3>
+<p>My Daily Activities:</p>
+<div id="daily-activities-chart" class="chart-container"></div>
+
+<hr>
+
+<!-- Section 5: Scatter Chart - Age vs Salary -->
+<h3>LO 3.2: Google Charts - Scatter Chart</h3>
+<p>Age vs Salary:</p>
+<div id="scatter-chart" class="chart-container"></div>
+
+<hr>
+
+<!-- Section 6: Bar Chart - City Population (Consolidation Task 1) -->
+<h3>Consolidation Task 1: City Population Bar Chart</h3>
+<div id="bar-chart" class="chart-container"></div>
+
+<hr>
+
+<!-- Section 7: Line Chart - City Population Trends (Consolidation Task 2) -->
+<h3>Consolidation Task 2: City Population Line Chart</h3>
+<div id="line-chart" class="chart-container"></div>
+
+<hr>
+
+<!-- Section 8: Column Chart - Monthly Sales (Consolidation Task 3) -->
+<h3>Consolidation Task 3: Monthly Sales Column Chart</h3>
+<div id="column-chart" class="chart-container"></div>
+
+<hr>
+
+<!-- Section 9: Time-stamp Feature -->
+<h3>LO 3.3: Time-stamp Feature for Submission Validation</h3>
+<p>This shows the last modified time from GitHub API:</p>
+<div id="last-updated">Loading last update time...</div>
+<button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">  
+    Verify Last Modified Time  
+</button>
+
+<hr>
+
+<!-- Section 10: Word Count Feature -->
+<h3>LO 3.4: Word Count Feature</h3>
+<p>Word count for sections:</p>
+<div id="wordCountSections">
+    <h4>Sample Text Sections:</h4>
+    
+    <!-- Sample Introduction Text -->
+    <div id="Introduction_InText">
+        <p>Active Learning (Angluin, 1988, Cohn et al., 1994) is a paradigm where a concept is learnt by an intelligent machine through the interaction of an oracle with the machine system, over a sequence of learning epochs. A distinctive component in an active system is the querying strategy, used to sample candidate training instances from a pool and evaluate them for informativeness, i.e., their potential to improve the classification model.</p>
+    </div>
+    
+    <!-- Sample Analysis Text -->
+    <div id="Analysis_InText">
+        <p>Bridge deck repair durability is the subject of much recent research such as in Toshihiko et al (2023). The data shows that repairs costing £0.7 million have a lifespan of 2 years, while repairs costing £17.4 million can last up to 7 years. This analysis demonstrates the cost-benefit relationship in bridge maintenance strategies. Further research is needed to optimize repair schedules and costs.</p>
+    </div>
+    
+    <p id="totalWordCount"></p>
+</div>
+
+<hr>
+        <script>
+    // ============================================
+    // LO 3.1: Change Button Color
+    // ============================================
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get a reference to the button element
+        var button = document.getElementById("colorButton");
+
+        // Function to change the button color
+        function changeColor() {
+            // Generate a random color (hexadecimal)
+            var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+
+            // Set the button's background color to the random color
+            button.style.backgroundColor = randomColor;
+        }
+
+        // Add a click event listener to the button
+        if (button) {
+            button.addEventListener("click", changeColor);
+        }
+
+        // ============================================
+        // Consolidation Task 1: Alert Input Text
+        // ============================================
+        // Get references to the input field and button
+        var input = document.getElementById("textInput");
+        var alertBtn = document.getElementById("alertButton");
+
+        // Function to show an alert with the input text
+        function showAlert() {
+            var inputText = input.value;
+            alert("You entered: " + inputText);
+        }
+
+        // Add a click event listener to the button
+        if (alertBtn) {
+            alertBtn.addEventListener("click", showAlert);
+        }
+
+        // ============================================
+        // Consolidation Task 2: Random Number Generator
+        // ============================================
+        // Get a reference to the button and paragraph
+        var generateButton = document.getElementById("generateButton");
+        var paragraph = document.getElementById("randomNumber");
+
+        // Function to generate and display a random number
+        function generateRandomNumber() {
+            var randomNumber = Math.floor(Math.random() * 10) + 1;
+            if (paragraph) {
+                paragraph.textContent = "Random Number: " + randomNumber;
+            }
+        }
+
+        // Add a click event listener to the button
+        if (generateButton) {
+            generateButton.addEventListener("click", generateRandomNumber);
+        }
+    });
+
+    // ============================================
+    // LO 3.2: Google Charts
+    // ============================================
+    
+    // Load the corechart package
+    google.charts.load('current', {'packages':['corechart']});
+    
+    // Set callback when Google Charts is loaded
+    google.charts.setOnLoadCallback(drawAllCharts);
+    
+    function drawAllCharts() {
+        drawDailyActivitiesChart();
+        drawScatterChart();
+        drawBarChart();
+        drawLineChart();
+        drawColumnChart();
+    }
+    
+    // 1. Daily Activities Pie Chart
+    function drawDailyActivitiesChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Work', 8],
+            ['Sleep', 8],
+            ['Eat', 2],
+            ['Study', 4],
+            ['Exercise', 2]
+        ]);
+        
+        var options = {
+            title: 'My Daily Activities',
+            width: 600,
+            height: 400,
+            backgroundColor: '#f9f9f9'
+        };
+        
+        var chart = new google.visualization.PieChart(document.getElementById('daily-activities-chart'));
+        chart.draw(data, options);
+    }
+    
+    // 2. Scatter Chart (Age vs Salary)
+    function drawScatterChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Age');
+        data.addColumn('number', 'Salary');
+        
+        data.addRows([
+            [25, 40000],
+            [30, 50000],
+            [35, 60000],
+            [40, 75000],
+            [45, 80000],
+            [50, 90000]
+        ]);
+        
+        var options = {
+            title: 'Age vs. Salary',
+            hAxis: { title: 'Age' },
+            vAxis: { title: 'Salary' },
+            width: 600,
+            height: 400,
+            backgroundColor: '#f9f9f9'
+        };
+        
+        var chart = new google.visualization.ScatterChart(document.getElementById('scatter-chart'));
+        chart.draw(data, options);
+    }
+    
+    // 3. Bar Chart - City Populations (Consolidation Task 1)
+    function drawBarChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'City');
+        data.addColumn('number', 'Population');
+        
+        data.addRows([
+            ['London', 9648000],
+            ['Birmingham', 1153900],
+            ['Edinburgh', 554000]
+        ]);
+        
+        var options = {
+            title: 'City Populations in 2023',
+            width: 600,
+            height: 400,
+            backgroundColor: '#f9f9f9',
+            hAxis: { title: 'Population' },
+            vAxis: { title: 'City' }
+        };
+        
+        var chart = new google.visualization.BarChart(document.getElementById('bar-chart'));
+        chart.draw(data, options);
+    }
+    
+    // 4. Line Chart - City Population Trends (Consolidation Task 2)
+    function drawLineChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Year');
+        data.addColumn('number', 'London');
+        data.addColumn('number', 'Birmingham');
+        data.addColumn('number', 'Edinburgh');
+        
+        data.addRows([
+            [2013, 8414000, 1092200, 495000],
+            [2015, 8661000, 1113000, 507000],
+            [2017, 8916000, 1137100, 519000],
+            [2019, 9177000, 1141800, 531000],
+            [2021, 9426000, 1142500, 543000],
+            [2023, 9648000, 1153900, 554000]
+        ]);
+        
+        var options = {
+            title: 'City Population Trends (2013-2023)',
+            width: 600,
+            height: 400,
+            backgroundColor: '#f9f9f9',
+            hAxis: { title: 'Year' },
+            vAxis: { title: 'Population' },
+            colors: ['#3366cc', '#dc3912', '#ff9900'],
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
+        
+        var chart = new google.visualization.LineChart(document.getElementById('line-chart'));
+        chart.draw(data, options);
+    }
+    
+    // 5. Column Chart - Monthly Sales (Consolidation Task 3)
+    function drawColumnChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Month');
+        data.addColumn('number', 'Sales (in GBP)');
+        
+        data.addRows([
+            ['January', 25000],
+            ['February', 28000],
+            ['March', 32000],
+            ['April', 27000],
+            ['May', 31000],
+            ['June', 34000],
+            ['July', 38000],
+            ['August', 36000],
+            ['September', 31000],
+            ['October', 29000],
+            ['November', 27000],
+            ['December', 32000]
+        ]);
+        
+        var options = {
+            title: 'Monthly Sales in 2023',
+            width: 600,
+            height: 400,
+            backgroundColor: '#f9f9f9',
+            hAxis: { title: 'Month' },
+            vAxis: { title: 'Sales (in GBP)' },
+            colors: ['#3366cc'],
+            legend: 'none'
+        };
+        
+        var chart = new google.visualization.ColumnChart(document.getElementById('column-chart'));
+        chart.draw(data, options);
+    }
+    
+    // ============================================
+    // LO 3.3: Time-stamp Feature
+    // ============================================
+    async function getLastUpdatedTime() {
+        // REPLACE WITH YOUR GitHub username and repository name
+        const username = 'YOUR_GITHUB_USERNAME';
+        const repo = 'YOUR_REPOSITORY_NAME';
+        
+        const url = `https://api.github.com/repos/${username}/${repo}/commits`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: { 
+                    "Accept": 'application/vnd.github.v3+json'
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Error fetching date: ${response.status} - ${response.statusText}`);
+            }
+            
+            const commits = await response.json();
+            if (commits && commits.length > 0) {
+                const lastCommitDate = new Date(commits[0].commit.committer.date);
+                document.getElementById('last-updated').innerText = 
+                    `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+            } else {
+                document.getElementById('last-updated').innerText = 'No commits found in the repository.';
+            }
+        } catch (error) {
+            console.error('Error fetching the last updated time:', error);
+            document.getElementById('last-updated').innerText = 
+                'Error fetching update time. Please check the repository details.';
+        }
+    }
+    
+    // Function to verify the last update time
+    async function verifyLastUpdatedTime() {
+        document.getElementById('last-updated').innerText = 'Verifying...';
+        await getLastUpdatedTime();
+        alert('Last modified time has been successfully verified from GitHub API.');
+    }
+    
+    // Initial load of timestamp
+    window.onload = function() {
+        getLastUpdatedTime();
+        displayTotalWordCount(); // Also load word count on page load
+    };
+    
+    // ============================================
+    // LO 3.4: Word Count Feature
+    // ============================================
+    // Function to calculate and display word count for a specified section
+    function displayWordCount(sectionId) {
+        // Get the text content from the specified section
+        const text = document.getElementById(sectionId).textContent;
+        
+        // Split text into words based on spaces and filter out any empty strings
+        const wordArray = text.trim().split(/\s+/);
+        
+        // Count the words
+        const wordCount = wordArray.length;
+        
+        // Return the word count for summing purposes
+        return wordCount;
+    }
+    
+    // Function to calculate and display total word count from selected sections
+    function displayTotalWordCount() {
+        // Calculate word count for each section and accumulate the total
+        const IntroductionCount = displayWordCount("Introduction_InText");
+        const AnalysisCount = displayWordCount("Analysis_InText");
+        
+        // Calculate the sum of all selected sections
+        const totalWordCount = IntroductionCount + AnalysisCount;
+        
+        // Display the total word count
+        document.getElementById("totalWordCount").innerText = 
+            `Total word count (Introduction + Analysis): ${totalWordCount} words`;
+    }
+</script>
         
 </html>
 </html>
