@@ -98,7 +98,7 @@ These concepts are detrimental to the world of physics as they challenge the New
 <h3 id="Principles">The Fundamental Principles of Einstein's Theory</h3>
 <p class="ex1">
 <pre id="Principles_InText">
-Einstein's special relativity relies on two quite simple laws that contradict our classical physics. First, the laws of physics are to be identical in all non-accelerating frames of references. Secondly, the speed of a light is constant where c is estimated to be about 3x10^8 ms^-1 regardless of the motion of the light source or the motion of the observer. These principles are shown to have led to world changing consequences where time and space are relative. (<a href="#ref1">Einstein, 1905</a>).
+Einstein's special relativity relies on two simple laws that contradict our classical physics. First, the laws of physics are identical in all non-accelerating frames of references. Secondly, the speed of a light is constant where c is estimated to be about 3x10^8 ms^-1 regardless of the motion of the light source or the motion of the observer. These principles are shown to have led to world changing consequences where time and space are relative. (<a href="#ref1">Einstein, 1905</a>).
 
 The mathematical principle of relativity lies within the Lorentz transformation equations. Time dilation is expressed in the equation Δt' = Δt/√(1-v²/c²), where Δt' is the dilated time measured by a stationary observer, Δt is the proper time measured by the moving clock, and v is the relative velocity. Likewise, length contraction follows L' = L√(1-v²/c²), where L' is the contracted length measured by a stationary observer and L is the proper length in the object's frame of rest. These equations reveal to us that as velocity approaches the speed of light, time increasingly slows and lengths dramatically shorten within the direction of motion (<a href="#ref5">Resnick, 1968</a>).
 </pre>
@@ -191,76 +191,30 @@ Additionally, another example of technology which relies on Einstein's relativis
 </pre>
 </p>
 
-<!-- Time Stamp from H3 Worksheet -->
-<div id="last-updated">Loading last update time...</div>
-<button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">  
-    Verify Last Modified Time  
-</button>
-
-<!-- Word Count from H3 Worksheet -->
-<p id="totalWordCount"></p>
-<hr>
-
 <script>
-// Word count function from H3 worksheet
-function displayWordCount(sectionId) {
+  // Function to calculate and display word count for a specified section
+  function displayWordCount(sectionId, outputId) {
+    // Get the text content from the specified section
     const text = document.getElementById(sectionId).textContent;
+    // Split text into words based on spaces and filter out any empty strings
     const wordArray = text.trim().split(/\s+/);
-    return wordArray.length;
-}
-
-function displayTotalWordCount() {
+    // Count the words
+    const wordCount = wordArray.length;
+    // Return the word count for summing purposes
+    return wordCount;
+  }
+  // Function to calculate and display total word count from selected sections
+  function displayTotalWordCount() {
+    // Calculate word count for each section and accumulate the total
     const IntroductionCount = displayWordCount("Introduction_InText");
-    const PrinciplesCount = displayWordCount("Principles_InText");
-    const DilationCount = displayWordCount("Dilation_InText");
-    const ContractionCount = displayWordCount("Contraction_InText");
     const AnalysisCount = displayWordCount("Analysis_InText");
-    const ApplicationsCount = displayWordCount("Applications_InText");
-    
-    const totalWordCount = IntroductionCount + PrinciplesCount + DilationCount + 
-                           ContractionCount + AnalysisCount + ApplicationsCount;
-    
-    document.getElementById("totalWordCount").innerText = 'Total word count (excluding Abstract and References): ' + totalWordCount;
-}
-
-// Time stamp function from H3 worksheet
-async function getLastUpdatedTime() {
-    const username = 'YOUR_GITHUB_USERNAME';
-    const repo = 'YOUR_REPOSITORY_NAME';
-    const url = `https://api.github.com/repos/${username}/${repo}/commits`;
-
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: { "Accept": 'application/vnd.github.v4+json' }
-        });
-        
-        if (!response.ok) {
-            throw new Error(`Error fetching date: ${response.status} - ${response.statusText}`);
-        }
-
-        const commits = await response.json();
-        if (commits && commits.length > 0) {
-            const lastCommitDate = new Date(commits[0].commit.committer.date);
-            document.getElementById('last-updated').innerText = 'Last Modified Time: ' + lastCommitDate.toLocaleString();
-        } else {
-            document.getElementById('last-updated').innerText = 'No commits found in the repository.';
-        }
-    } catch (error) {
-        console.error('Error fetching the last updated time:', error);
-        document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
-    }
-}
-
-async function verifyLastUpdatedTime() {
-    document.getElementById('last-updated').innerText = 'Verifying...';
-    await getLastUpdatedTime();
-    alert('Last modified time has been successfully verified from GitHub API.');
-}
-
-window.onload = function() {
-    displayTotalWordCount();
-    getLastUpdatedTime();
+    // Calculate the sum of all selected sections
+    const totalWordCount = IntroductionCount + AnalysisCount;
+    // Display the total word count
+    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+  }
+  // Run the function for specific sections and display total count when the page loads
+  window.onload = displayTotalWordCount;
 };
 </script>
 
