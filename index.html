@@ -5,11 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
+/* ADD THESE NEW STYLES TO FIX THE ISSUES */
+body {
+    background-color:#FFFFFF;
+    margin: 0 auto; /* Centers page horizontally */
+    max-width: 1000px; /* Limits page width */
+    padding: 20px; /* Adds space around page edges */
+    font-family: Arial, sans-serif;
+}
+
+/* Makes text wrap properly and limits line length */
+.content-text {
+    max-width: 800px;
+    margin: 0 auto; /* Centers content */
+    line-height: 1.6; /* Better spacing between lines */
+    text-align: left; /* Aligns text to left within centered container */
+}
+
+/* Center headings */
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Make pre tags wrap text */
+pre {
+    white-space: pre-wrap; /* Makes text wrap */
+    word-wrap: break-word;
+    max-width: 800px;
+    margin: 0 auto; /* Centers pre content */
+}
+
+/* Center tables */
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 70%;
-    margin: 10px 0;
+    width: 80%;
+    margin: 10px auto; /* Centers tables */
 }
 
 td, th {
@@ -22,8 +53,16 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+/* Center images */
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Remove the old p.ex1 style that was causing problems */
 p.ex1 {
-    margin-left: 250px;
+    margin: 0 auto; /* Center instead of offset */
+    max-width: 800px;
 }
 
 .mySlides {display:none;}
@@ -34,13 +73,13 @@ h3 {
 
 hr {
     border: 1px solid #002147;
+    margin: 30px auto; /* Centers horizontal rules */
+    width: 80%;
 }
 </style>
 </head>
 
-<body style="background-color:#FFFFFF;margin-left:50px;">
-
-
+<body>
 
 <img src="WebBanner2025.png" alt="Banner" width="1200" height="300">
 <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
@@ -49,6 +88,7 @@ hr {
 
 <h2 style="font-family:Times new roman;"><b>Conference paper: Time Dilation and Length Contraction: How Cosmic Phenomena Influence Everyday Life</b></h2>
 
+<div class="content-text">
 <table>
 <tr>
 <th><h3>Table of contents</h3></th>
@@ -78,71 +118,84 @@ hr {
 <td><a href="#References">References</a></td>
 </tr>
 </table>
+</div>
 
 <hr>
 
 <h3 id="Abstract">Abstract</h3>
-<p class="ex1">
-<pre>
+<div class="content-text">
+<p>
 Inside this article, the abstract concepts of time dilation and length contraction from Einstein's theory of special relativity are explored, where their many different applications are demonstrated not only in fundamental physics but our modern technology today. Whilst Einstein's relativistic theories are only observed at speeds approaching light velocity (approximately 2.998 x 10^8 ms^-1), the implications of special relativity are ingrained into our daily lives through particle physics, global positioning systems and our own understanding of electromagnetism. Through different simple thought experiments, we can visualize how time slows and lengths contract for objects in rapid motion, displaying a universe that is much more intertwined than classical physics suggests. This discussion further highlights how relativity influences electromagnetic forces, whilst challenging our initial notions of what we know about space and time in order to provide a clear display of its necessity to our technology (<a href="#ref1">Einstein, 1905</a>).
-</pre>
 </p>
+</div>
 
 <h3 id="Introduction">Introduction: Why Einstein's Theories Still Matter Today</h3>
-<p class="ex1">
-<pre id="Introduction_InText">The theories that Albert Einstein wrote in 1905 of special relativity fundamentally reshaped our understanding of space, time and motion.
-Whilst his theories were often perceived as abstract concepts most commonly referring to black holes with very little practical relevance,
-time dilation and length contract have evolved from theoretical curiosity to essentials of our technology.
-These relativistic effects explain why our GPS satellites require daily adjustments, how particle accelerators such as the Large Hadron Collider at CERN can function and even explaining why magnets work revealing electromagnetism as a relativistic phenomena (<a href="#ref3">Purcell & Morin, 2013</a>).
-
-These concepts are detrimental to the world of physics as they challenge the Newtonian assumptions about an absolute, universal time and distances that are thought to be fixed.
-In a world where the use of technology is becoming increasingly prevalent, and satellite communications and high-speed particle research are on the rise, outruling relativity leads
-to many drastic errors.(<a href="#ref4">Hafele & Keating, 1972</a>).
-</pre>
+<div class="content-text">
+<p id="Introduction_InText">
+The theories that Albert Einstein wrote in 1905 of special relativity fundamentally reshaped our understanding of space, time and motion. Whilst his theories were often perceived as abstract concepts most commonly referring to black holes with very little practical relevance, time dilation and length contract have evolved from theoretical curiosity to essentials of our technology.
 </p>
+<p>
+These relativistic effects explain why our GPS satellites require daily adjustments, how particle accelerators such as the Large Hadron Collider at CERN can function and even explaining why magnets work revealing electromagnetism as a relativistic phenomena (<a href="#ref3">Purcell & Morin, 2013</a>).
+</p>
+<p>
+These concepts are detrimental to the world of physics as they challenge the Newtonian assumptions about an absolute, universal time and distances that are thought to be fixed. In a world where the use of technology is becoming increasingly prevalent, and satellite communications and high-speed particle research are on the rise, outruling relativity leads to many drastic errors.(<a href="#ref4">Hafele & Keating, 1972</a>).
+</p>
+</div>
 
 <h3 id="Principles">The Fundamental Principles of Einstein's Theory</h3>
-<p class="ex1">
-<pre id="Principles_InText">
+<div class="content-text">
+<p id="Principles_InText">
 Einstein's special relativity relies on two simple laws that contradict our classical physics. First, the laws of physics are identical in all non-accelerating frames of references. Secondly, the speed of a light is constant where c is estimated to be about 3x10^8 ms^-1 regardless of the motion of the light source or the motion of the observer. These principles are shown to have led to world changing consequences where time and space are relative. (<a href="#ref1">Einstein, 1905</a>).
-
-The mathematical principle of relativity lies within the Lorentz transformation equations. Time dilation is expressed in the equation Δt' = Δt/√(1-v²/c²), where Δt' is the dilated time measured by a stationary observer, Δt is the proper time measured by the moving clock, and v is the relative velocity. Likewise, length contraction follows L' = L√(1-v²/c²), where L' is the contracted length measured by a stationary observer and L is the proper length in the object's frame of rest. These equations reveal to us that as velocity approaches the speed of light, time increasingly slows and lengths dramatically shorten within the direction of motion (<a href="#ref5">Resnick, 1968</a>).
-</pre>
 </p>
+<p>
+The mathematical principle of relativity lies within the Lorentz transformation equations. Time dilation is expressed in the equation Δt' = Δt/√(1-v²/c²), where Δt' is the dilated time measured by a stationary observer, Δt is the proper time measured by the moving clock, and v is the relative velocity. Likewise, length contraction follows L' = L√(1-v²/c²), where L' is the contracted length measured by a stationary observer and L is the proper length in the object's frame of rest. These equations reveal to us that as velocity approaches the speed of light, time increasingly slows and lengths dramatically shorten within the direction of motion (<a href="#ref5">Resnick, 1968</a>).
+</p>
+</div>
 
 <h3 id="Dilation">Visualizing Time Dilation Through the Light Clock Thought Experiment</h3>
-<p class="ex1">
-<pre id="Dilation_InText">
+<div class="content-text">
+<p id="Dilation_InText">
 Time Dilation can be hard to visualise so sometimes a thought experiment can help us. Imagine a "light clock" consisting of two parallel mirrors with a photon bouncing vertically between them. Each complete bounce represents one "tick." Now imagine this clock moving horizontally at a speed close to the speed of light. To a stationary observer, the photon must travel a longer, more diagonal path between ticks compared to the vertical path seen by somebody moving with the clock.
-From the stationary perspective of this thought experiment, the photon travels further at the same constant speed of light, requiring more time per tick. So, the moving clock appears to tick slower demonstrating time dilation. At 87% of light speed, time dilates by a factor of 2. At 99.5% of light speed, time dilates by a factor of 10. For astronauts traveling at these velocities, years can pass on Earth while they experience only months, a phenomenon with substantial implications for future interstellar travel(<a href="#ref6">Griffiths, 2008</a>).
-</pre>
 </p>
+<p>
+From the stationary perspective of this thought experiment, the photon travels further at the same constant speed of light, requiring more time per tick. So, the moving clock appears to tick slower demonstrating time dilation. At 87% of light speed, time dilates by a factor of 2. At 99.5% of light speed, time dilates by a factor of 10. For astronauts traveling at these velocities, years can pass on Earth while they experience only months, a phenomenon with substantial implications for future interstellar travel(<a href="#ref6">Griffiths, 2008</a>).
+</p>
+</div>
 
 <h3 id="Contraction">Understanding Length Contraction with a Moving Train</h3>
-<p class="ex1">
-<pre id="Contraction_InText">
+<div class="content-text">
+<p id="Contraction_InText">
 Consider a train moving at 0.9c towards a tunnel. From the perspective of anyone observing the tunnel, the moving train only contracts in length according to the equation previously mentioned (L' = L√(1-v²/c²)). A train of about 100 metres at rest may appear to be only 44 metres long whilst moving however this differs from the perspective of the passengers. On the opposing perspective, it is observed as the tunnel contracting towards them instead.
-This reciprocal length contraction reveals the relativity within events that appear simultaneously in one frame but may not be in another frame. The contraction of the train only occurs along its motion where both its height and width remain the same. This specific requirement towards its direction explains how fast-moving objects don't appear squashed to the human observer, where light travels times from different parts of an object creating complex optical effects that are different from actual physical contraction (<a href="#ref5">Resnick, 1968</a>).
-</pre>
 </p>
+<p>
+This reciprocal length contraction reveals the relativity within events that appear simultaneously in one frame but may not be in another frame. The contraction of the train only occurs along its motion where both its height and width remain the same. This specific requirement towards its direction explains how fast-moving objects don't appear squashed to the human observer, where light travels times from different parts of an object creating complex optical effects that are different from actual physical contraction (<a href="#ref5">Resnick, 1968</a>).
+</p>
+</div>
 
 <h3 id="Analysis">Analysis and Discussion: The Electromagnetic Connection</h3>
-<p class="ex1">
-<pre id="Analysis_InText">
+<div class="content-text">
+<p id="Analysis_InText">
 In everyday physics we can see a very fascinating link between relativity and electromagnetism. This can be observed when we consider two parallel wires carrying current in the same direction.Naturally, we would expect them to repel due to like charges, however to our surprise they actually attract due to a phenomenon explained by special relativity.
-In a stationary frame of the positive ions in the wires, electrons are moving creating an electric current. When we consider the electrons' perspective, the positive ions appear to move backward, contracting in separation due to length contraction which increases positive charge density and creates an electrostatic attraction that we can interpret as magnetism (<a href="#ref3">Purcell & Morin, 2013</a>).
-The idea that magnetism is electricity viewed from a different inertial frame brings together these forces as different forms of the same electromagnetic interaction. It demonstrates how relativity isn't merely about phenomena in space but is intrinsic to the fundamental forces governing our everyday technology such as electric motors to computer memory storage (<a href="#ref3">Griffiths, 1999</a>).
-</pre>
 </p>
+<p>
+In a stationary frame of the positive ions in the wires, electrons are moving creating an electric current. When we consider the electrons' perspective, the positive ions appear to move backward, contracting in separation due to length contraction which increases positive charge density and creates an electrostatic attraction that we can interpret as magnetism (<a href="#ref3">Purcell & Morin, 2013</a>).
+</p>
+<p>
+The idea that magnetism is electricity viewed from a different inertial frame brings together these forces as different forms of the same electromagnetic interaction. It demonstrates how relativity isn't merely about phenomena in space but is intrinsic to the fundamental forces governing our everyday technology such as electric motors to computer memory storage (<a href="#ref3">Griffiths, 1999</a>).
+</p>
+</div>
 
 <h3 id="Applications">Applications</h3>
-<p class="ex1">
-<pre id="Applications_InText">
+<div class="content-text">
+<p id="Applications_InText">
 The GPS otherwise known as Global positioning system, is one of our most common uses of relativity in our day to day lives. GPS satellites orbit the Earth at approximately 14,000 km/h, and experience both special relativistic time dilation (by slowing clocks by 7 microseconds daily) and general relativistic effects from Earth's weaker gravity (by speeding clocks up by 45 microseconds daily). The difference of the 38-microsecond daily correction is necessary in order to achieve true accuracy where without it, errors would accumulate at 10 kilometers daily (<a href="#ref2">Ashby, 2003</a>).
-Additionally, another example of technology which relies on Einstein's relativistic effects are particle accelerators such as the Large Hadron Collider. As protons can approach 0.999c where c is the speed of light, their mass effectively increases by a factor of 7,000 times than their regular rest mass due to the equation E=mc², allowing them to carry tremendous amounts of energy in their collisions. Simultaneously, length contraction can enable the 27 kilometre ring to appear much shorter from the protons' perspective, making circular acceleration likely and possible (<a href="#ref7">CERN, 2020</a>).
-</pre>
 </p>
+<p>
+Additionally, another example of technology which relies on Einstein's relativistic effects are particle accelerators such as the Large Hadron Collider. As protons can approach 0.999c where c is the speed of light, their mass effectively increases by a factor of 7,000 times than their regular rest mass due to the equation E=mc², allowing them to carry tremendous amounts of energy in their collisions. Simultaneously, length contraction can enable the 27 kilometre ring to appear much shorter from the protons' perspective, making circular acceleration likely and possible (<a href="#ref7">CERN, 2020</a>).
+</p>
+</div>
 
+<div class="content-text">
 <table>
 <tr>
 <th>Technology</th>
@@ -177,32 +230,48 @@ Additionally, another example of technology which relies on Einstein's relativis
 </table>
 
 <p><em>Table 1: Summary of relativistic effects in modern technology (Compiled from multiple sources including <a href="#ref2">Ashby, 2003</a>, <a href="#ref7">CERN, 2020</a> and <a href="#ref3">Purcell & Morin, 2013</a>).</em></p>
+</div>
 
 <hr>
 
 <h3 id="References">References</h3>
+<div class="content-text">
 <p>
-<pre>
 1. <a id="ref1" href="https://doi.org/10.1002/andp.19053221004">Einstein, A. (1905). On the Electrodynamics of Moving Bodies. Annalen der Physik, 17(10), 891-921.</a>
-
+</p>
+<p>
 2. <a id="ref2" href="https://doi.org/10.12942/lrr-2003-1">Ashby, N. (2003). Relativity in the Global Positioning System. Living Reviews in Relativity, 6(1), 1-42.</a>
-
+</p>
+<p>
 3. <a id="ref3" href="https://doi.org/10.1017/CBO9781139005043">Purcell, E. M. & Morin, D. J. (2013). Electricity and Magnetism (3rd ed.). Cambridge University Press.</a>
-
+</p>
+<p>
 4. <a id="ref4" href="https://doi.org/10.1126/science.177.4044.166">Hafele, J. C. & Keating, R. E. (1972). Around-the-World Atomic Clocks: Predicted Relativistic Time Gains. Science, 177(4044), 166-168.</a>
-
+</p>
+<p>
 5. <a id="ref5" href="https://doi.org/10.1119/1.1974297">Resnick, R. (1968). Introduction to Special Relativity. Wiley & Sons.</a>
-
+</p>
+<p>
 6. <a id="ref6" href="https://doi.org/10.1002/9783527618460">Griffiths, D. J. (2008). Introduction to Elementary Particles (2nd ed.). Wiley-VCH.</a>
-
+</p>
+<p>
 7. <a id="ref7" href="https://doi.org/10.5281/zenodo.4009171">European Organization for Nuclear Research (CERN). (2020). The Large Hadron Collider: A Marvel of Technology. CERN Publications.</a>
 </p>
+</div>
 
 <!-- Time Stamp from H3 Worksheet -->
+<div class="content-text" style="text-align:center;">
 <div id="last-updated">Loading last update time...</div>
 <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
     Verify Last Modified Time
 </button>
+</div>
+
+<!-- Word Count from H3 Worksheet -->
+<div class="content-text">
+<p id="totalWordCount"></p>
+</div>
+<hr>
 
 <script>
     async function getLastUpdatedTime() {
@@ -243,10 +312,6 @@ Additionally, another example of technology which relies on Einstein's relativis
     window.onload = getLastUpdatedTime;
 </script>
 
-<!-- Word Count from H3 Worksheet -->
-<p id="totalWordCount"></p>
-<hr>
-
 <script>
   function displayWordCount(sectionId) {
     const text = document.getElementById(sectionId).textContent;
@@ -277,5 +342,4 @@ Additionally, another example of technology which relies on Einstein's relativis
 
 </body>
 </html>
-
         
