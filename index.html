@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
+/* ADD THESE NEW STYLES TO FIX THE ISSUES */
 body {
     background-color:#FFFFFF;
     margin: 0 auto; /* Centers page horizontally */
@@ -259,10 +260,18 @@ Additionally, another example of technology which relies on Einstein's relativis
 </div>
 
 <!-- Time Stamp from H3 Worksheet -->
+<div class="content-text" style="text-align:center;">
 <div id="last-updated">Loading last update time...</div>
 <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
     Verify Last Modified Time
 </button>
+</div>
+
+<!-- Word Count from H3 Worksheet -->
+<div class="content-text">
+<p id="totalWordCount"></p>
+</div>
+<hr>
 
 <script>
     async function getLastUpdatedTime() {
@@ -303,35 +312,62 @@ Additionally, another example of technology which relies on Einstein's relativis
     window.onload = getLastUpdatedTime;
 </script>
 
-<!-- Word Count from H3 Worksheet -->
-<p id="totalWordCount"></p>
-<hr>
-
+<!-- FIXED WORD COUNT SCRIPT - NOW COUNTS ALL PARAGRAPHS IN EACH SECTION -->
 <script>
-  function displayWordCount(sectionId) {
-    const text = document.getElementById(sectionId).textContent;
-    const wordArray = text.trim().split(/\s+/);
-    const wordCount = wordArray.length;
-    return wordCount;
+  // New function to count words in ALL paragraphs within a section
+  function countWordsInSection(sectionId) {
+    const section = document.querySelector('h3[id="' + sectionId + '"]');
+    if (!section) return 0;
+    
+    // Get the next .content-text div after this heading
+    let contentDiv = section.nextElementSibling;
+    while (contentDiv && !contentDiv.classList.contains('content-text')) {
+      contentDiv = contentDiv.nextElementSibling;
+    }
+    
+    if (!contentDiv) return 0;
+    
+    // Get all text from all paragraphs in this div
+    let fullText = '';
+    const paragraphs = contentDiv.querySelectorAll('p');
+    paragraphs.forEach(p => {
+      fullText += ' ' + p.textContent;
+    });
+    
+    // Also include any direct text in the div (not in paragraphs)
+    fullText += ' ' + contentDiv.textContent;
+    
+    // Count words
+    const wordArray = fullText.trim().split(/\s+/);
+    return wordArray.length;
   }
 
   function displayTotalWordCount() {
-    const IntroductionCount = displayWordCount("Introduction_InText");
-    const PrinciplesCount = displayWordCount("Principles_InText");
-    const DilationCount = displayWordCount("Dilation_InText");
-    const ContractionCount = displayWordCount("Contraction_InText");
-    const AnalysisCount = displayWordCount("Analysis_InText");
-    const ApplicationsCount = displayWordCount("Applications_InText");
+    const sections = [
+      'Introduction',
+      'Principles', 
+      'Dilation',
+      'Contraction',
+      'Analysis',
+      'Applications'
+    ];
     
-    const totalWordCount = IntroductionCount + PrinciplesCount + DilationCount + 
-                           ContractionCount + AnalysisCount + ApplicationsCount;
+    let totalWordCount = 0;
     
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+    sections.forEach(section => {
+      totalWordCount += countWordsInSection(section);
+    });
+    
+    // Check if we're getting a reasonable count
+    console.log('Total word count calculated:', totalWordCount);
+    
+    document.getElementById("totalWordCount").innerText = `Total word count (excluding Abstract and References): ${totalWordCount}`;
   }
 
+  // Run when page loads
   window.onload = function() {
     getLastUpdatedTime();
-    displayTotalWordCount();
+    setTimeout(displayTotalWordCount, 500); // Small delay to ensure all content is loaded
   };
 </script>
 
