@@ -3,426 +3,582 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Interstellar Relativity: Time Dilation & Length Contraction</title>
+    <title>Cosmic Relativity | Dark Academia Study</title>
+    
+    <!-- Google Fonts for Dark Academia aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=Cinzel:wght@400;500;600&family=Inconsolata:wght@300;400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <!-- Google Charts API -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
-    <!-- Interstellar Theme CSS -->
+    <!-- Dark Academia Space Aesthetic CSS -->
     <style>
-        /* Interstellar Theme - Dark space background with star effects */
+        /* ===== DARK ACADEMIA SPACE THEME ===== */
+        :root {
+            --parchment: #F5F1E6;
+            --old-paper: #E8E0D0;
+            --dusty-rose: #B5838D;
+            --sage-green: #7A918D;
+            --midnight-blue: #0A1931;
+            --deep-space: #040D21;
+            --star-gold: #D4AF37;
+            --moon-silver: #C0C0C0;
+            --ink-black: #1A1A1A;
+            --aged-leather: #8B4513;
+            --vellum: #FAF3E0;
+            --constellation: rgba(212, 175, 55, 0.15);
+        }
+        
+        /* Base Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Crimson Pro', Georgia, serif;
+            line-height: 1.8;
+            color: var(--parchment);
+            background: 
+                linear-gradient(135deg, var(--deep-space) 0%, var(--midnight-blue) 100%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><pattern id="stars" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="20" cy="20" r="0.3" fill="%23D4AF37" opacity="0.7"/><circle cx="50" cy="80" r="0.2" fill="%23D4AF37" opacity="0.6"/><circle cx="80" cy="30" r="0.4" fill="%23D4AF37" opacity="0.8"/><circle cx="10" cy="90" r="0.15" fill="%23C0C0C0" opacity="0.5"/><circle cx="90" cy="60" r="0.25" fill="%23C0C0C0" opacity="0.6"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+            background-attachment: fixed;
             margin: 0;
             padding: 20px;
-            background: #000 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><radialGradient id="stars"><stop offset="0%" stop-color="#000"/><stop offset="100%" stop-color="#111"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23stars)"/><circle cx="10%" cy="15%" r="1" fill="white" opacity="0.8"/><circle cx="25%" cy="40%" r="0.5" fill="white" opacity="0.6"/><circle cx="60%" cy="25%" r="0.7" fill="white" opacity="0.7"/><circle cx="85%" cy="60%" r="0.3" fill="white" opacity="0.5"/><circle cx="45%" cy="75%" r="0.9" fill="white" opacity="0.9"/></svg>');
-            color: #e0e0e0;
-            line-height: 1.8;
+            position: relative;
+            min-height: 100vh;
         }
         
-        /* Banner and Header Styling */
-        header {
+        /* Parchment Texture Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(139, 69, 19, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 69, 19, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Main Container - Vintage Book Layout */
+        .academic-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(26, 26, 26, 0.85);
+            border-radius: 4px;
+            padding: 40px;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        /* Decorative Border */
+        .academic-container::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            pointer-events: none;
+        }
+        
+        /* Header Styling */
+        .academic-header {
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 20, 40, 0.8);
-            border-radius: 10px;
-            margin-bottom: 30px;
-            border: 1px solid #3498db;
-            box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 30px;
         }
         
-        .banner {
-            max-width: 100%;
-            height: auto;
-            margin: 0 auto;
-            display: block;
+        .academic-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            right: 25%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--star-gold), transparent);
         }
         
-        h1, h2, h3 {
-            color: #3498db;
-            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        .university-banner {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            border-radius: 2px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
         
         h1 {
-            font-size: 2.5em;
+            font-family: 'Cinzel', serif;
+            font-size: 2.8em;
+            font-weight: 600;
+            color: var(--star-gold);
             margin: 20px 0;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         h2 {
-            font-size: 1.8em;
-            margin: 15px 0;
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.6em;
+            color: var(--sage-green);
+            margin: 30px 0 15px;
+            border-bottom: 1px solid rgba(122, 145, 141, 0.3);
+            padding-bottom: 8px;
         }
         
         h3 {
-            font-size: 1.4em;
-            color: #1abc9c;
-            margin-top: 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.3em;
+            color: var(--dusty-rose);
+            margin: 25px 0 15px;
+            position: relative;
             padding-left: 15px;
-            border-left: 4px solid #1abc9c;
         }
         
-        /* Table of Contents - Space Navigation */
-        .toc-container {
-            background: rgba(10, 25, 47, 0.9);
+        h3::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--star-gold);
+        }
+        
+        /* Paragraph Styling */
+        p {
+            margin-bottom: 1.5em;
+            text-align: justify;
+            font-size: 1.1em;
+        }
+        
+        .abstract-text {
+            font-style: italic;
+            background: rgba(245, 241, 230, 0.05);
             padding: 25px;
-            border-radius: 8px;
-            margin: 30px 0;
-            border: 1px solid #2980b9;
-            box-shadow: 0 0 15px rgba(41, 128, 185, 0.4);
-        }
-        
-        .toc-container h3 {
-            color: #3498db;
-            margin-top: 0;
-            border-left: none;
-            padding-left: 0;
-            text-align: center;
-        }
-        
-        .toc-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .toc-table tr {
-            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
-        }
-        
-        .toc-table tr:last-child {
-            border-bottom: none;
-        }
-        
-        .toc-table td {
-            padding: 12px 20px;
-        }
-        
-        .toc-table a {
-            color: #3498db;
-            text-decoration: none;
-            display: block;
-            padding: 8px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .toc-table a:hover {
-            background: rgba(52, 152, 219, 0.2);
-            color: #1abc9c;
-            transform: translateX(10px);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
-        }
-        
-        /* Content Sections - Space Panels */
-        .content-section {
-            background: rgba(15, 30, 50, 0.9);
-            padding: 30px;
-            border-radius: 10px;
+            border-left: 3px solid var(--dusty-rose);
             margin: 25px 0;
-            border: 1px solid #2c3e50;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            border-radius: 0 4px 4px 0;
         }
         
-        .content-section:hover {
-            transform: translateY(-5px);
-            border-color: #3498db;
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
-        }
-        
-        /* Abstract Box */
-        .abstract-box {
-            background: linear-gradient(135deg, rgba(25, 50, 80, 0.9), rgba(15, 30, 50, 0.9));
-            border-left: 5px solid #e74c3c;
+        .thought-experiment {
+            background: rgba(10, 25, 49, 0.4);
             padding: 25px;
-            margin: 20px 0;
-            border-radius: 8px;
+            margin: 30px 0;
+            border-radius: 4px;
+            border-left: 4px solid var(--star-gold);
+            position: relative;
             font-style: italic;
         }
         
-        /* Thought Experiment Boxes */
-        .thought-experiment {
-            background: rgba(44, 62, 80, 0.9);
-            border-left: 4px solid #9b59b6;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
+        .thought-experiment::before {
+            content: "✧";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: var(--star-gold);
+            font-size: 1.2em;
+        }
+        
+        /* Table of Contents - Library Catalogue Style */
+        .toc-container {
+            background: rgba(10, 25, 49, 0.5);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
             position: relative;
         }
         
-        .thought-experiment:before {
-            content: "💫";
-            position: absolute;
-            left: -25px;
-            top: 20px;
-            font-size: 1.5em;
+        .toc-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4em;
+            color: var(--star-gold);
+            margin-bottom: 20px;
+            text-align: center;
         }
         
-        /* MathML Styling */
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .toc-item {
+            padding: 12px 15px;
+            background: rgba(26, 26, 26, 0.7);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            border-left: 2px solid transparent;
+        }
+        
+        .toc-item:hover {
+            border-left: 2px solid var(--star-gold);
+            background: rgba(10, 25, 49, 0.8);
+            transform: translateX(5px);
+        }
+        
+        .toc-item a {
+            color: var(--parchment);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .toc-item a::before {
+            content: "📜";
+            margin-right: 10px;
+            opacity: 0.7;
+        }
+        
+        /* MathML and Equations */
         math {
-            font-family: 'Cambria Math', serif;
+            font-family: 'Inconsolata', monospace;
             font-size: 1.2em;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(10, 25, 49, 0.6);
             padding: 15px;
-            border-radius: 5px;
+            margin: 20px auto;
             display: block;
             text-align: center;
-            margin: 20px auto;
-            border: 1px solid #34495e;
-            color: #f39c12;
+            border-radius: 3px;
+            border: 1px solid rgba(122, 145, 141, 0.3);
+            color: var(--star-gold);
+            max-width: 500px;
         }
         
-        /* Applications Table */
+        /* Applications Table - Old Manuscript Style */
         .applications-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 30px 0;
-            background: rgba(25, 50, 80, 0.9);
-            border-radius: 8px;
-            overflow: hidden;
+            margin: 40px 0;
+            background: rgba(26, 26, 26, 0.7);
+            border: 1px solid rgba(139, 69, 19, 0.3);
         }
         
         .applications-table th {
-            background: linear-gradient(135deg, #2980b9, #2c3e50);
-            color: white;
+            background: linear-gradient(135deg, var(--midnight-blue), var(--deep-space));
+            color: var(--star-gold);
             padding: 15px;
             text-align: left;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+            border-bottom: 2px solid var(--aged-leather);
         }
         
         .applications-table td {
             padding: 12px 15px;
-            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            border-bottom: 1px solid rgba(122, 145, 141, 0.2);
         }
         
         .applications-table tr:last-child td {
             border-bottom: none;
         }
         
-        .applications-table tr:nth-child(even) {
-            background: rgba(44, 62, 80, 0.6);
+        .applications-table tr:hover {
+            background: rgba(10, 25, 49, 0.4);
         }
         
-        /* References Section */
-        .references {
-            background: rgba(25, 50, 80, 0.9);
-            padding: 25px;
-            border-radius: 8px;
-            margin: 30px 0;
+        /* References - Bibliography Style */
+        .references-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .reference-item {
-            padding: 12px 0;
-            border-bottom: 1px dashed rgba(52, 152, 219, 0.3);
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95em;
         }
         
-        .reference-item:last-child {
-            border-bottom: none;
+        .reference-item::before {
+            content: "[•]";
+            position: absolute;
+            left: 0;
+            color: var(--sage-green);
         }
         
         .reference-item a {
-            color: #3498db;
+            color: var(--dusty-rose);
             text-decoration: none;
-            transition: color 0.3s ease;
+            border-bottom: 1px dotted rgba(181, 131, 141, 0.3);
+            transition: all 0.3s ease;
         }
         
         .reference-item a:hover {
-            color: #1abc9c;
-            text-decoration: underline;
+            color: var(--star-gold);
+            border-bottom: 1px solid var(--star-gold);
         }
         
-        /* JavaScript Features */
-        .js-features {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+        /* Interactive Charts Section */
+        .charts-section {
+            background: rgba(10, 25, 49, 0.5);
             padding: 30px;
-            border-radius: 10px;
             margin: 40px 0;
-            border: 1px solid rgba(52, 152, 219, 0.3);
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
         
         .chart-container {
             width: 100%;
             height: 400px;
-            background: rgba(15, 30, 50, 0.9);
-            border-radius: 8px;
-            padding: 20px;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 4px;
             margin: 20px 0;
-            border: 1px solid #2c3e50;
+            border: 1px solid rgba(122, 145, 141, 0.2);
         }
         
-        .interactive-button {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            border: none;
+        /* JavaScript Features */
+        .js-features {
+            background: rgba(10, 25, 49, 0.6);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 4px;
+            border: 1px solid rgba(122, 145, 141, 0.3);
+        }
+        
+        .interactive-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .control-group {
+            background: rgba(26, 26, 26, 0.7);
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .academic-button {
+            background: linear-gradient(135deg, var(--midnight-blue), var(--deep-space));
+            color: var(--parchment);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             padding: 12px 24px;
-            border-radius: 5px;
+            border-radius: 3px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95em;
             cursor: pointer;
-            font-size: 16px;
-            margin: 10px;
             transition: all 0.3s ease;
-            font-weight: 600;
+            margin: 5px;
         }
         
-        .interactive-button:hover {
-            background: linear-gradient(135deg, #2980b9, #1f618d);
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+        .academic-button:hover {
+            background: linear-gradient(135deg, var(--deep-space), var(--midnight-blue));
+            border-color: var(--star-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .timestamp-display {
-            background: rgba(44, 62, 80, 0.9);
+        .academic-input {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(122, 145, 141, 0.3);
+            color: var(--parchment);
+            padding: 10px;
+            border-radius: 3px;
+            font-family: 'Inconsolata', monospace;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .academic-input:focus {
+            outline: none;
+            border-color: var(--star-gold);
+        }
+        
+        .timestamp-display, .wordcount-display {
+            background: rgba(26, 26, 26, 0.8);
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 3px;
+            border-left: 3px solid var(--sage-green);
             margin: 15px 0;
-            font-family: monospace;
-            font-size: 1.1em;
-            color: #1abc9c;
-            border: 1px solid #2c3e50;
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.9em;
         }
         
-        .word-count-display {
-            background: rgba(44, 62, 80, 0.9);
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            font-weight: bold;
-            color: #f39c12;
-            border: 1px solid #2c3e50;
+        .wordcount-display {
+            border-left-color: var(--dusty-rose);
         }
         
-        /* Horizontal Rules - Wormhole Effect */
+        /* Separator Lines */
         hr {
             border: none;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #3498db, #1abc9c, #3498db, transparent);
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(212, 175, 55, 0.3), 
+                rgba(122, 145, 141, 0.3), 
+                rgba(212, 175, 55, 0.3), 
+                transparent);
             margin: 40px 0;
-            position: relative;
         }
         
-        hr:after {
-            content: "⚡";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: #000;
-            padding: 0 10px;
-            color: #f39c12;
+        /* Decorative Elements */
+        .decoration {
+            text-align: center;
+            margin: 30px 0;
+            color: rgba(212, 175, 55, 0.3);
+            font-size: 2em;
+            letter-spacing: 10px;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .content-section, .toc-container, .js-features {
+            .academic-container {
                 padding: 20px;
+                margin: 20px auto;
             }
             
             h1 {
                 font-size: 2em;
             }
             
-            h2 {
-                font-size: 1.5em;
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .interactive-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .academic-container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            
+            .academic-button, .academic-input {
+                display: none;
             }
         }
         
         /* Animations */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 10px rgba(52, 152, 219, 0.3); }
-            50% { box-shadow: 0 0 20px rgba(52, 152, 219, 0.6); }
-            100% { box-shadow: 0 0 10px rgba(52, 152, 219, 0.3); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .content-section {
-            animation: pulse 4s infinite;
+            animation: fadeIn 0.8s ease-out;
         }
         
-        /* Special Effects */
-        .star-field {
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        body::after {
+            content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: radial-gradient(circle at 20% 30%, transparent 10%, rgba(212, 175, 55, 0.03) 20%, transparent 30%),
+                        radial-gradient(circle at 80% 70%, transparent 10%, rgba(122, 145, 141, 0.02) 20%, transparent 30%);
             pointer-events: none;
             z-index: -1;
-            opacity: 0.3;
+            animation: starTwinkle 4s infinite alternate;
         }
     </style>
 </head>
 <body>
-    <!-- Star Field Background Effect -->
-    <div class="star-field"></div>
-    
-    <!-- Header with University Banner -->
-    <header>
-        <img src="WebBanner2025.png" alt="University of Surrey Banner" width="600" height="200" class="banner">
-        <h1>ENG0018 Computer Laboratory 2025/26</h1>
-        <h2>Student URN: 6922716</h2>
-        <h2 style="font-family: Calibri, sans-serif; color: #f39c12;">Time Dilation and Length Contraction: How Cosmic Phenomena Influence Everyday Life</h2>
-    </header>
-    
-    <!-- Table of Contents -->
-    <div class="toc-container">
-        <h3>Table of Contents</h3>
-        <table class="toc-table">
-            <tr><td><a href="#abstract">Abstract</a></td></tr>
-            <tr><td><a href="#introduction">Introduction: Why Einstein's Theories Still Matter Today</a></td></tr>
-            <tr><td><a href="#principles">The Fundamental Principles of Einstein's Theory</a></td></tr>
-            <tr><td><a href="#time-dilation">Visualizing Time Dilation Through the Light Clock Thought Experiment</a></td></tr>
-            <tr><td><a href="#length-contraction">Understanding Length Contraction with a Moving Train</a></td></tr>
-            <tr><td><a href="#electromagnetic">Analysis and Discussion: The Electromagnetic Connection</a></td></tr>
-            <tr><td><a href="#applications">Applications</a></td></tr>
-            <tr><td><a href="#references">References</a></td></tr>
-            <tr><td><a href="#charts">Interactive Relativity Charts</a></td></tr>
-            <tr><td><a href="#features">JavaScript Features</a></td></tr>
-        </table>
-    </div>
-    
-    <hr>
-    
-    <!-- Abstract Section -->
-    <div class="content-section" id="abstract">
-        <h3>Abstract</h3>
-        <div class="abstract-box">
-            Inside this article, the abstract concepts of time dilation and length contraction from Einstein's theory of special relativity are explored, where their many different applications are demonstrated not only in fundamental physics but our modern technology today. Whilst Einstein's relativistic theories are only observed at speeds approaching light velocity (approximately 2.998 × 10⁸ ms⁻¹), the implications of special relativity are ingrained into our daily lives through particle physics, global positioning systems and our own understanding of electromagnetism. Through different simple thought experiments, we can visualize how time slows and lengths contract for objects in rapid motion, displaying a universe that is much more intertwined than classical physics suggests. This discussion further highlights how relativity influences electromagnetic forces, whilst challenging our initial notions of what we know about space and time in order to provide a clear display of its necessity to our technology (Einstein, 1905).
+    <div class="academic-container">
+        <!-- Header Section -->
+        <header class="academic-header">
+            <img src="WebBanner2025.png" alt="University of Surrey" class="university-banner" width="600" height="200">
+            <h1>ENG0018 Computer Laboratory 2025/26</h1>
+            <h2>Student URN: 6922716</h2>
+            <div class="decoration">✦ ✦ ✦</div>
+            <h1 style="color: var(--star-gold); margin-top: 20px;">Time Dilation & Length Contraction:<br>Cosmic Phenomena in Everyday Life</h1>
+        </header>
+        
+        <!-- Table of Contents -->
+        <div class="toc-container">
+            <div class="toc-title">Table of Contents</div>
+            <div class="toc-grid">
+                <div class="toc-item"><a href="#abstract">Abstract</a></div>
+                <div class="toc-item"><a href="#introduction">Introduction</a></div>
+                <div class="toc-item"><a href="#principles">Fundamental Principles</a></div>
+                <div class="toc-item"><a href="#time-dilation">Time Dilation Experiment</a></div>
+                <div class="toc-item"><a href="#length-contraction">Length Contraction</a></div>
+                <div class="toc-item"><a href="#electromagnetic">Electromagnetic Connection</a></div>
+                <div class="toc-item"><a href="#applications">Modern Applications</a></div>
+                <div class="toc-item"><a href="#references">References</a></div>
+                <div class="toc-item"><a href="#visualizations">Relativity Visualizations</a></div>
+                <div class="toc-item"><a href="#interactive">Interactive Features</a></div>
+            </div>
         </div>
-    </div>
-    
-    <hr>
-    
-    <!-- Introduction Section -->
-    <div class="content-section" id="introduction">
-        <h3>Introduction: Why Einstein's Theories Still Matter Today</h3>
-        <p>The theories that Albert Einstein wrote in 1905 of special relativity fundamentally reshaped our understanding of space, time and motion. Whilst his theories were often perceived as abstract concepts most commonly referring to black holes with very little practical relevance, time dilation and length contraction have evolved from theoretical fascinations to essential components of our modern technology. These relativistic effects explain why our GPS satellites require daily adjustments of 38 microseconds, how particle accelerators such as the Large Hadron Collider at CERN can function, and even explaining why magnets work revealing electromagnetism as a relativistic phenomena (Purcell & Morin, 2013).</p>
         
-        <p>These concepts are detrimental to the world of physics as they challenge the Newtonian assumptions about an absolute, universal time and distances that are thought to be fixed. In a world where the use of technology is becoming increasingly prevalent, and satellite communications and high-speed particle research are on the rise, outruling relativity leads to many drastic errors. Einstein's theories are shown to represent a more accurate depiction of our reality that we know of (Hafele & Keating, 1972).</p>
-    </div>
-    
-    <hr>
-    
-    <!-- Fundamental Principles Section -->
-    <div class="content-section" id="principles">
-        <h3>The Fundamental Principles of Einstein's Theory</h3>
-        <p>Einstein's special relativity relies on two quite simple laws that contradict our classical physics. First, the laws of physics are to be identical in all non-accelerating frames of references. Secondly, the speed of light is constant where c is estimated to be about 3×10⁸ ms⁻¹ regardless of the motion of the light source or the motion of the observer. These principles are shown to have led to world changing consequences where time and space are relative (Einstein, 1905).</p>
+        <hr>
         
-        <p>The mathematical principle of relativity lies within the Lorentz transformation equations. Time dilation is expressed in the equation:</p>
+        <!-- Abstract Section -->
+        <section id="abstract" class="content-section">
+            <h3>Abstract</h3>
+            <div class="abstract-text">
+                Inside this article, the abstract concepts of time dilation and length contraction from Einstein's theory of special relativity are explored, where their many different applications are demonstrated not only in fundamental physics but our modern technology today. Whilst Einstein's relativistic theories are only observed at speeds approaching light velocity (approximately 2.998 × 10⁸ ms⁻¹), the implications of special relativity are ingrained into our daily lives through particle physics, global positioning systems and our own understanding of electromagnetism. Through different simple thought experiments, we can visualize how time slows and lengths contract for objects in rapid motion, displaying a universe that is much more intertwined than classical physics suggests. This discussion further highlights how relativity influences electromagnetic forces, whilst challenging our initial notions of what we know about space and time in order to provide a clear display of its necessity to our technology (Einstein, 1905).
+            </div>
+        </section>
         
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <mrow>
-                <mi>Δt'</mi>
-                <mo>=</mo>
-                <mfrac>
-                    <mi>Δt</mi>
+        <hr>
+        
+        <!-- Introduction Section -->
+        <section id="introduction" class="content-section">
+            <h3>Introduction: Why Einstein's Theories Still Matter Today</h3>
+            <p>The theories that Albert Einstein wrote in 1905 of special relativity fundamentally reshaped our understanding of space, time and motion. Whilst his theories were often perceived as abstract concepts most commonly referring to black holes with very little practical relevance, time dilation and length contraction have evolved from theoretical fascinations to essential components of our modern technology. These relativistic effects explain why our GPS satellites require daily adjustments of 38 microseconds, how particle accelerators such as the Large Hadron Collider at CERN can function, and even explaining why magnets work revealing electromagnetism as a relativistic phenomena (Purcell & Morin, 2013).</p>
+            <p>These concepts are detrimental to the world of physics as they challenge the Newtonian assumptions about an absolute, universal time and distances that are thought to be fixed. In a world where the use of technology is becoming increasingly prevalent, and satellite communications and high-speed particle research are on the rise, outruling relativity leads to many drastic errors. Einstein's theories are shown to represent a more accurate depiction of our reality that we know of (Hafele & Keating, 1972).</p>
+        </section>
+        
+        <hr>
+        
+        <!-- Fundamental Principles Section -->
+        <section id="principles" class="content-section">
+            <h3>The Fundamental Principles of Einstein's Theory</h3>
+            <p>Einstein's special relativity relies on two quite simple laws that contradict our classical physics. First, the laws of physics are to be identical in all non-accelerating frames of references. Secondly, the speed of light is constant where c is estimated to be about 3×10⁸ ms⁻¹ regardless of the motion of the light source or the motion of the observer. These principles are shown to have led to world changing consequences where time and space are relative (Einstein, 1905).</p>
+            <p>The mathematical principle of relativity lies within the Lorentz transformation equations. Time dilation is expressed in the equation:</p>
+            
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>Δt'</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mi>Δt</mi>
+                        <msqrt>
+                            <mrow>
+                                <mn>1</mn>
+                                <mo>-</mo>
+                                <mfrac>
+                                    <msup><mi>v</mi><mn>2</mn></msup>
+                                    <msup><mi>c</mi><mn>2</mn></msup>
+                                </mfrac>
+                            </mrow>
+                        </msqrt>
+                    </mfrac>
+                </mrow>
+            </math>
+            
+            <p>where Δt' is the dilated time measured by a stationary observer, Δt is the proper time measured by the moving clock, and v is the relative velocity. Likewise, length contraction follows:</p>
+            
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>L'</mi>
+                    <mo>=</mo>
+                    <mi>L</mi>
+                    <mo>×</mo>
                     <msqrt>
                         <mrow>
                             <mn>1</mn>
@@ -433,199 +589,179 @@
                             </mfrac>
                         </mrow>
                     </msqrt>
-                </mfrac>
-            </mrow>
-        </math>
-        
-        <p>where Δt' is the dilated time measured by a stationary observer, Δt is the proper time measured by the moving clock, and v is the relative velocity. Likewise, length contraction follows:</p>
-        
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <mrow>
-                <mi>L'</mi>
-                <mo>=</mo>
-                <mi>L</mi>
-                <mo>×</mo>
-                <msqrt>
-                    <mrow>
-                        <mn>1</mn>
-                        <mo>-</mo>
-                        <mfrac>
-                            <msup><mi>v</mi><mn>2</mn></msup>
-                            <msup><mi>c</mi><mn>2</mn></msup>
-                        </mfrac>
-                    </mrow>
-                </msqrt>
-            </mrow>
-        </math>
-        
-        <p>where L' is the contracted length measured by a stationary observer and L is the proper length in the object's frame of rest. These equations reveal to us that as velocity approaches the speed of light, time increasingly slows and lengths dramatically shorten within the direction of motion (Resnick, 1968).</p>
-    </div>
-    
-    <hr>
-    
-    <!-- Time Dilation Thought Experiment -->
-    <div class="content-section" id="time-dilation">
-        <h3>Visualizing Time Dilation Through the Light Clock Thought Experiment</h3>
-        <div class="thought-experiment">
-            <p>Time dilation can be hard to visualise so sometimes a thought experiment can help us. Imagine a "light clock" consisting of two parallel mirrors with a photon bouncing vertically between them. Each complete bounce represents one "tick." Now imagine this clock moving horizontally at a speed close to the speed of light. To a stationary observer, the photon must travel a longer, more diagonal path between ticks compared to the vertical path seen by somebody moving with the clock.</p>
+                </mrow>
+            </math>
             
-            <p>From the stationary perspective of this thought experiment, the photon travels further at the same constant speed of light, requiring more time per tick. Thus, the moving clock appears to tick slower therefore demonstrating time dilation. At 87% of light speed, time dilates by a factor of 2. At 99.5% of light speed, time dilates by a factor of 10. For astronauts traveling at these velocities, years can pass on Earth while they experience only months, a phenomenon with substantial implications for future interstellar travel (Griffiths, 2008).</p>
-        </div>
-    </div>
-    
-    <hr>
-    
-    <!-- Length Contraction Thought Experiment -->
-    <div class="content-section" id="length-contraction">
-        <h3>Understanding Length Contraction with a Moving Train</h3>
-        <div class="thought-experiment">
-            <p>Consider a train moving at 0.9c towards a tunnel. From the perspective of anyone observing the tunnel, the moving train only contracts in length according to the equation previously mentioned (L' = L√(1-v²/c²)). A train of about 100 metres at rest may appear to be only 44 metres long whilst moving however this differs from the perspective of the passengers. On the opposing perspective, it is observed as the tunnel contracting towards them instead.</p>
+            <p>where L' is the contracted length measured by a stationary observer and L is the proper length in the object's frame of rest. These equations reveal to us that as velocity approaches the speed of light, time increasingly slows and lengths dramatically shorten within the direction of motion (Resnick, 1968).</p>
+        </section>
+        
+        <hr>
+        
+        <!-- Time Dilation Thought Experiment -->
+        <section id="time-dilation" class="content-section">
+            <h3>Visualizing Time Dilation Through the Light Clock Thought Experiment</h3>
+            <div class="thought-experiment">
+                <p>Time dilation can be hard to visualise so sometimes a thought experiment can help us. Imagine a "light clock" consisting of two parallel mirrors with a photon bouncing vertically between them. Each complete bounce represents one "tick." Now imagine this clock moving horizontally at a speed close to the speed of light. To a stationary observer, the photon must travel a longer, more diagonal path between ticks compared to the vertical path seen by somebody moving with the clock.</p>
+                <p>From the stationary perspective of this thought experiment, the photon travels further at the same constant speed of light, requiring more time per tick. Thus, the moving clock appears to tick slower therefore demonstrating time dilation. At 87% of light speed, time dilates by a factor of 2. At 99.5% of light speed, time dilates by a factor of 10. For astronauts traveling at these velocities, years can pass on Earth while they experience only months, a phenomenon with substantial implications for future interstellar travel (Griffiths, 2008).</p>
+            </div>
+        </section>
+        
+        <hr>
+        
+        <!-- Length Contraction Thought Experiment -->
+        <section id="length-contraction" class="content-section">
+            <h3>Understanding Length Contraction with a Moving Train</h3>
+            <div class="thought-experiment">
+                <p>Consider a train moving at 0.9c towards a tunnel. From the perspective of anyone observing the tunnel, the moving train only contracts in length according to the equation previously mentioned (L' = L√(1-v²/c²)). A train of about 100 metres at rest may appear to be only 44 metres long whilst moving however this differs from the perspective of the passengers. On the opposing perspective, it is observed as the tunnel contracting towards them instead.</p>
+                <p>This reciprocal length contraction reveals the relativity within events that appear simultaneously in one frame but may not be in another frame. The contraction of the train only occurs along its motion where both its height and width remain the same. This specific requirement towards its direction explains how fast-moving objects don't appear visually squashed to the human observer, where light travels times from different parts of an object creating complex and abstract optical effects that are different from actual physical contraction (Resnick, 1968).</p>
+            </div>
+        </section>
+        
+        <hr>
+        
+        <!-- Electromagnetic Connection -->
+        <section id="electromagnetic" class="content-section">
+            <h3>Analysis and Discussion: The Electromagnetic Connection</h3>
+            <p>In everyday physics we can see a very fascinating link between relativity and electromagnetism. This can be observed when we consider two parallel wires carrying current in the same direction. Naturally, we would expect them to repel due to like charges, however to our surprise they actually attract due to a phenomenon explained by special relativity.</p>
+            <p>In a stationary frame of the positive ions in the wires, electrons are moving creating an electric current. When we consider the electrons' perspective, the positive ions appear to move backward, contracting in separation due to length contraction which increases positive charge density and creates an electrostatic attraction that we can interpret as magnetism (Purcell & Morin, 2013).</p>
+            <p>The idea that magnetism is electricity viewed from a different inertial frame brings together these forces as different forms of the same electromagnetic interaction. It demonstrates how relativity isn't merely about phenomena in space but is intrinsic to the fundamental forces governing our everyday technology such as electric motors to computer memory storage (Griffiths, 1999).</p>
+        </section>
+        
+        <hr>
+        
+        <!-- Applications Section -->
+        <section id="applications" class="content-section">
+            <h3>Applications</h3>
+            <p>The GPS otherwise known as Global positioning system, is one of our most common uses of relativity in our day to day lives. GPS satellites orbit the Earth at approximately 14,000 km/h, and experience both special relativistic time dilation (by slowing clocks by 7 microseconds daily) and general relativistic effects from Earth's weaker gravity (by speeding clocks up by 45 microseconds daily). The difference of the 38-microsecond daily correction is necessary in order to achieve true accuracy where without it, errors would accumulate at 10 kilometers daily (Ashby, 2003).</p>
+            <p>Additionally, another example of technology which relies on Einstein's relativistic effects are particle accelerators such as the Large Hadron Collider. As protons can approach 0.999c where c is the speed of light, their mass effectively increases by a factor of 7,000 times than their regular rest mass due to the equation E=mc², allowing them to carry tremendous amounts of energy in their collisions. Simultaneously, length contraction can enable the 27 kilometre ring to appear much shorter from the protons' perspective, making circular acceleration likely and possible (CERN, 2020).</p>
+            <p>Medical technologies can also benefit from relativity where positron emission tomography (PET) scanners rely on the annihilation of positrons and electrons. This is a process which is governed by relativistic quantum mechanics. Another example is the cathode ray tube and modern particle beam cancer treatments which utilize relativistic particle dynamics.</p>
             
-            <p>This reciprocal length contraction reveals the relativity within events that appear simultaneously in one frame but may not be in another frame. The contraction of the train only occurs along its motion where both its height and width remain the same. This specific requirement towards its direction explains how fast-moving objects don't appear visually squashed to the human observer, where light travels times from different parts of an object creating complex and abstract optical effects that are different from actual physical contraction (Resnick, 1968).</p>
-        </div>
-    </div>
-    
-    <hr>
-    
-    <!-- Electromagnetic Connection -->
-    <div class="content-section" id="electromagnetic">
-        <h3>Analysis and Discussion: The Electromagnetic Connection</h3>
-        <p>In everyday physics we can see a very fascinating link between relativity and electromagnetism. This can be observed when we consider two parallel wires carrying current in the same direction. Naturally, we would expect them to repel due to like charges, however to our surprise they actually attract due to a phenomenon explained by special relativity.</p>
+            <h3 style="margin-top: 40px;">Relativistic Effects in Modern Technologies</h3>
+            <table class="applications-table">
+                <tr>
+                    <th>Technology</th>
+                    <th>Relativistic Effect</th>
+                    <th>Correction Required</th>
+                    <th>Consequence if Ignored</th>
+                </tr>
+                <tr>
+                    <td>GPS Navigation</td>
+                    <td>Time dilation (7 μs/day slower)<br>Gravitational time dilation (45 μs/day faster)</td>
+                    <td>Net 38 μs/day adjustment</td>
+                    <td>10 km daily positioning error</td>
+                </tr>
+                <tr>
+                    <td>Particle Accelerators</td>
+                    <td>Length contraction of accelerator ring<br>Mass increase at near-light speeds</td>
+                    <td>Component alignment<br>Energy calculation adjustments</td>
+                    <td>Inaccurate collision energies</td>
+                </tr>
+                <tr>
+                    <td>Medical Proton Therapy</td>
+                    <td>Length contraction of beam path<br>Mass increase at therapeutic speeds</td>
+                    <td>Targeting precision calculations<br>Dosage timing adjustments</td>
+                    <td>Incorrect tumor targeting</td>
+                </tr>
+                <tr>
+                    <td>Financial Trading Networks</td>
+                    <td>Light-speed signal delays<br>Network latency relativity</td>
+                    <td>Server placement optimization<br>Algorithm timing adjustments</td>
+                    <td>Microsecond trading disadvantages</td>
+                </tr>
+            </table>
+        </section>
         
-        <p>In a stationary frame of the positive ions in the wires, electrons are moving creating an electric current. When we consider the electrons' perspective, the positive ions appear to move backward, contracting in separation due to length contraction which increases positive charge density and creates an electrostatic attraction that we can interpret as magnetism (Purcell & Morin, 2013).</p>
+        <hr>
         
-        <p>The idea that magnetism is electricity viewed from a different inertial frame brings together these forces as different forms of the same electromagnetic interaction. It demonstrates how relativity isn't merely about phenomena in space but is intrinsic to the fundamental forces governing our everyday technology such as electric motors to computer memory storage (Griffiths, 1999).</p>
-    </div>
-    
-    <hr>
-    
-    <!-- Applications Section -->
-    <div class="content-section" id="applications">
-        <h3>Applications</h3>
-        <p>The GPS otherwise known as Global positioning system, is one of our most common uses of relativity in our day to day lives. GPS satellites orbit the Earth at approximately 14,000 km/h, and experience both special relativistic time dilation (by slowing clocks by 7 microseconds daily) and general relativistic effects from Earth's weaker gravity (by speeding clocks up by 45 microseconds daily). The difference of the 38-microsecond daily correction is necessary in order to achieve true accuracy where without it, errors would accumulate at 10 kilometers daily (Ashby, 2003).</p>
+        <!-- References Section -->
+        <section id="references" class="content-section references-section">
+            <h3>References</h3>
+            <div class="reference-item">
+                <strong>Einstein, A. (1905).</strong> <em>On the Electrodynamics of Moving Bodies.</em> Annalen der Physik, 17(10), 891-921. 
+                <a href="https://doi.org/10.1002/andp.19053221004" target="_blank">https://doi.org/10.1002/andp.19053221004</a>
+            </div>
+            <div class="reference-item">
+                <strong>Ashby, N. (2003).</strong> <em>Relativity in the Global Positioning System.</em> Living Reviews in Relativity, 6(1), 1-42. 
+                <a href="https://doi.org/10.12942/lrr-2003-1" target="_blank">https://doi.org/10.12942/lrr-2003-1</a>
+            </div>
+            <div class="reference-item">
+                <strong>Purcell, E. M. & Morin, D. J. (2013).</strong> <em>Electricity and Magnetism (3rd ed.).</em> Cambridge University Press. 
+                <a href="https://doi.org/10.1017/CBO9781139005043" target="_blank">https://doi.org/10.1017/CBO9781139005043</a>
+            </div>
+            <div class="reference-item">
+                <strong>Hafele, J. C. & Keating, R. E. (1972).</strong> <em>Around-the-World Atomic Clocks: Predicted Relativistic Time Gains.</em> Science, 177(4044), 166-168. 
+                <a href="https://doi.org/10.1126/science.177.4044.166" target="_blank">https://doi.org/10.1126/science.177.4044.166</a>
+            </div>
+            <div class="reference-item">
+                <strong>Resnick, R. (1968).</strong> <em>Introduction to Special Relativity.</em> Wiley & Sons. 
+                <a href="https://doi.org/10.1119/1.1974297" target="_blank">https://doi.org/10.1119/1.1974297</a>
+            </div>
+            <div class="reference-item">
+                <strong>Griffiths, D. J. (2008).</strong> <em>Introduction to Elementary Particles (2nd ed.).</em> Wiley-VCH. 
+                <a href="https://doi.org/10.1002/9783527618460" target="_blank">https://doi.org/10.1002/9783527618460</a>
+            </div>
+            <div class="reference-item">
+                <strong>European Organization for Nuclear Research (CERN). (2020).</strong> <em>The Large Hadron Collider: A Marvel of Technology.</em> CERN Publications. 
+                <a href="https://doi.org/10.5281/zenodo.4009171" target="_blank">https://doi.org/10.5281/zenodo.4009171</a>
+            </div>
+        </section>
         
-        <p>Additionally, another example of technology which relies on Einstein's relativistic effects are particle accelerators such as the Large Hadron Collider. As protons can approach 0.999c where c is the speed of light, their mass effectively increases by a factor of 7,000 times than their regular rest mass due to the equation E=mc², allowing them to carry tremendous amounts of energy in their collisions. Simultaneously, length contraction can enable the 27 kilometre ring to appear much shorter from the protons' perspective, making circular acceleration likely and possible (CERN, 2020).</p>
+        <hr>
         
-        <p>Medical technologies can also benefit from relativity where positron emission tomography (PET) scanners rely on the annihilation of positrons and electrons. This is a process which is governed by relativistic quantum mechanics. Another example is the cathode ray tube and modern particle beam cancer treatments which utilize relativistic particle dynamics.</p>
+        <!-- Charts Section -->
+        <section id="visualizations" class="content-section charts-section">
+            <h3>Relativity Visualizations</h3>
+            <p>Interactive charts demonstrating relativistic effects:</p>
+            
+            <h4>Time Dilation Factor vs Velocity</h4>
+            <div id="time-dilation-chart" class="chart-container"></div>
+            
+            <h4>Length Contraction Factor vs Velocity</h4>
+            <div id="length-contraction-chart" class="chart-container"></div>
+            
+            <h4>Relativistic Energy Increase</h4>
+            <div id="energy-chart" class="chart-container"></div>
+        </section>
         
-        <!-- Applications Table -->
-        <h4>Table 1: Relativistic Effects in Modern Technologies</h4>
-        <table class="applications-table">
-            <tr>
-                <th>Technology</th>
-                <th>Relativistic Effect</th>
-                <th>Correction Required</th>
-                <th>Consequence if Ignored</th>
-            </tr>
-            <tr>
-                <td>GPS Navigation</td>
-                <td>Time dilation (7 μs/day slower)<br>Gravitational time dilation (45 μs/day faster)</td>
-                <td>Net 38 μs/day adjustment</td>
-                <td>10 km daily positioning error</td>
-            </tr>
-            <tr>
-                <td>Particle Accelerators</td>
-                <td>Length contraction of accelerator ring<br>Mass increase at near-light speeds</td>
-                <td>Component alignment<br>Energy calculation adjustments</td>
-                <td>Inaccurate collision energies</td>
-            </tr>
-            <tr>
-                <td>Medical Proton Therapy</td>
-                <td>Length contraction of beam path<br>Mass increase at therapeutic speeds</td>
-                <td>Targeting precision calculations<br>Dosage timing adjustments</td>
-                <td>Incorrect tumor targeting</td>
-            </tr>
-            <tr>
-                <td>Financial Trading Networks</td>
-                <td>Light-speed signal delays<br>Network latency relativity</td>
-                <td>Server placement optimization<br>Algorithm timing adjustments</td>
-                <td>Microsecond trading disadvantages</td>
-            </tr>
-        </table>
-    </div>
-    
-    <hr>
-    
-    <!-- References Section -->
-    <div class="content-section references" id="references">
-        <h3>References</h3>
-        <div class="reference-item">
-            <strong>Einstein, A. (1905).</strong> <em>On the Electrodynamics of Moving Bodies.</em> Annalen der Physik, 17(10), 891-921. 
-            <a href="https://doi.org/10.1002/andp.19053221004" target="_blank">https://doi.org/10.1002/andp.19053221004</a>
-        </div>
-        <div class="reference-item">
-            <strong>Ashby, N. (2003).</strong> <em>Relativity in the Global Positioning System.</em> Living Reviews in Relativity, 6(1), 1-42. 
-            <a href="https://doi.org/10.12942/lrr-2003-1" target="_blank">https://doi.org/10.12942/lrr-2003-1</a>
-        </div>
-        <div class="reference-item">
-            <strong>Purcell, E. M. & Morin, D. J. (2013).</strong> <em>Electricity and Magnetism (3rd ed.).</em> Cambridge University Press. 
-            <a href="https://doi.org/10.1017/CBO9781139005043" target="_blank">https://doi.org/10.1017/CBO9781139005043</a>
-        </div>
-        <div class="reference-item">
-            <strong>Hafele, J. C. & Keating, R. E. (1972).</strong> <em>Around-the-World Atomic Clocks: Predicted Relativistic Time Gains.</em> Science, 177(4044), 166-168. 
-            <a href="https://doi.org/10.1126/science.177.4044.166" target="_blank">https://doi.org/10.1126/science.177.4044.166</a>
-        </div>
-        <div class="reference-item">
-            <strong>Resnick, R. (1968).</strong> <em>Introduction to Special Relativity.</em> Wiley & Sons. 
-            <a href="https://doi.org/10.1119/1.1974297" target="_blank">https://doi.org/10.1119/1.1974297</a>
-        </div>
-        <div class="reference-item">
-            <strong>Griffiths, D. J. (2008).</strong> <em>Introduction to Elementary Particles (2nd ed.).</em> Wiley-VCH. 
-            <a href="https://doi.org/10.1002/9783527618460" target="_blank">https://doi.org/10.1002/9783527618460</a>
-        </div>
-        <div class="reference-item">
-            <strong>European Organization for Nuclear Research (CERN). (2020).</strong> <em>The Large Hadron Collider: A Marvel of Technology.</em> CERN Publications. 
-            <a href="https://doi.org/10.5281/zenodo.4009171" target="_blank">https://doi.org/10.5281/zenodo.4009171</a>
-        </div>
-    </div>
-    
-    <hr>
-    
-    <!-- Interactive Charts Section -->
-    <div class="content-section js-features" id="charts">
-        <h3>Interactive Relativity Charts</h3>
+        <hr>
         
-        <!-- Time Dilation Chart -->
-        <h4>Time Dilation Factor vs Velocity</h4>
-        <div id="time-dilation-chart" class="chart-container"></div>
+        <!-- Interactive Features Section -->
+        <section id="interactive" class="content-section js-features">
+            <h3>Interactive Features</h3>
+            <p>Explore relativistic concepts through interactive elements:</p>
+            
+            <div class="interactive-controls">
+                <div class="control-group">
+                    <h4>Interactive Demonstrations</h4>
+                    <button id="colorButton" class="academic-button">Change Button Colour</button>
+                    <input type="text" id="textInput" class="academic-input" placeholder="Enter text for alert...">
+                    <button id="alertButton" class="academic-button">Show Alert</button>
+                    <button id="generateButton" class="academic-button">Generate Random Number</button>
+                    <p id="randomNumber" style="margin-top: 10px; color: var(--sage-green);"></p>
+                </div>
+                
+                <div class="control-group">
+                    <h4>Submission Validation</h4>
+                    <div id="last-updated" class="timestamp-display">Loading last update time...</div>
+                    <button onclick="verifyLastUpdatedTime()" class="academic-button">Verify Last Modified Time</button>
+                </div>
+                
+                <div class="control-group">
+                    <h4>Article Statistics</h4>
+                    <button onclick="calculateWordCount()" class="academic-button">Calculate Word Count</button>
+                    <div id="totalWordCount" class="wordcount-display">Word count will appear here</div>
+                    <p style="font-size: 0.9em; color: var(--sage-green); margin-top: 10px;">
+                        <em>Note: Abstract and tables are excluded from word count as per requirements.</em>
+                    </p>
+                </div>
+            </div>
+        </section>
         
-        <!-- Length Contraction Chart -->
-        <h4>Length Contraction Factor vs Velocity</h4>
-        <div id="length-contraction-chart" class="chart-container"></div>
-        
-        <!-- Particle Energy Chart -->
-        <h4>Relativistic Particle Energy Increase</h4>
-        <div id="energy-chart" class="chart-container"></div>
-    </div>
-    
-    <hr>
-    
-    <!-- JavaScript Features Section -->
-    <div class="content-section js-features" id="features">
-        <h3>JavaScript Interactive Features</h3>
-        
-        <!-- Interactive Buttons -->
-        <h4>Interactive Demonstrations</h4>
-        <p>Click the button below to change its color randomly:</p>
-        <button id="colorButton" class="interactive-button">Click me to change colour</button>
-        
-        <p>Enter text and click to display an alert:</p>
-        <input type="text" id="textInput" placeholder="Enter text here" style="padding: 10px; border-radius: 5px; border: 1px solid #3498db; background: rgba(15, 30, 50, 0.9); color: white; width: 300px; margin-right: 10px;">
-        <button id="alertButton" class="interactive-button">Show Alert</button>
-        
-        <p>Generate a random number between 1 and 100:</p>
-        <button id="generateButton" class="interactive-button">Generate Random Number</button>
-        <p id="randomNumber" style="font-weight: bold; color: #f39c12; margin-top: 10px;">Result will appear here</p>
-        
-        <!-- Timestamp Feature -->
-        <h4>Submission Validation</h4>
-        <div id="last-updated" class="timestamp-display">Loading last update time...</div>
-        <button onclick="verifyLastUpdatedTime()" class="interactive-button">Verify Last Modified Time</button>
-        
-        <!-- Word Count Feature -->
-        <h4>Article Statistics</h4>
-        <button onclick="calculateWordCount()" class="interactive-button">Calculate Word Count</button>
-        <div id="totalWordCount" class="word-count-display">Word count will appear here</div>
+        <!-- Footer -->
+        <footer style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(122, 145, 141, 0.2);">
+            <p style="font-family: 'Cinzel', serif; color: var(--star-gold);">ENG0018 Computer Laboratory | Dark Academia Space Aesthetic</p>
+            <p style="font-size: 0.9em; color: var(--sage-green);">© 2025 University of Surrey</p>
+        </footer>
     </div>
     
     <!-- JavaScript Code -->
@@ -634,7 +770,6 @@
         // GOOGLE CHARTS - RELATIVITY VISUALIZATIONS
         // ============================================
         
-        // Load Google Charts
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawAllCharts);
         
@@ -644,117 +779,114 @@
             drawEnergyChart();
         }
         
-        // 1. Time Dilation Chart
         function drawTimeDilationChart() {
             var data = new google.visualization.DataTable();
-            data.addColumn('number', 'Velocity (fraction of c)');
+            data.addColumn('number', 'Velocity (v/c)');
             data.addColumn('number', 'Time Dilation Factor (γ)');
             
-            // Generate data points for time dilation factor
             for (var v = 0; v <= 0.99; v += 0.01) {
                 var gamma = 1 / Math.sqrt(1 - v * v);
                 data.addRow([v, gamma]);
             }
             
             var options = {
-                title: 'Time Dilation Factor γ vs Velocity (v/c)',
+                title: 'Time Dilation: γ = 1/√(1-v²/c²)',
                 width: '100%',
                 height: 350,
                 backgroundColor: 'transparent',
-                titleTextStyle: {color: '#3498db', fontSize: 18},
+                titleTextStyle: {color: '#D4AF37', fontSize: 16, fontName: 'Cinzel'},
                 hAxis: {
                     title: 'Velocity (fraction of light speed)',
-                    titleTextStyle: {color: '#e0e0e0'},
-                    textStyle: {color: '#e0e0e0'},
-                    gridlines: {color: '#2c3e50'}
+                    titleTextStyle: {color: '#7A918D'},
+                    textStyle: {color: '#7A918D'},
+                    gridlines: {color: '#1A1A1A'}
                 },
                 vAxis: {
                     title: 'Time Dilation Factor (γ)',
-                    titleTextStyle: {color: '#e0e0e0'},
-                    textStyle: {color: '#e0e0e0'},
-                    gridlines: {color: '#2c3e50'}
+                    titleTextStyle: {color: '#7A918D'},
+                    textStyle: {color: '#7A918D'},
+                    gridlines: {color: '#1A1A1A'}
                 },
-                legend: {textStyle: {color: '#e0e0e0'}},
-                colors: ['#e74c3c'],
-                curveType: 'function'
+                legend: {textStyle: {color: '#F5F1E6'}},
+                colors: ['#B5838D'],
+                curveType: 'function',
+                lineWidth: 3
             };
             
             var chart = new google.visualization.LineChart(document.getElementById('time-dilation-chart'));
             chart.draw(data, options);
         }
         
-        // 2. Length Contraction Chart
         function drawLengthContractionChart() {
             var data = new google.visualization.DataTable();
-            data.addColumn('number', 'Velocity (fraction of c)');
-            data.addColumn('number', 'Length Contraction Factor (1/γ)');
+            data.addColumn('number', 'Velocity (v/c)');
+            data.addColumn('number', 'Length Contraction (1/γ)');
             
-            // Generate data points for length contraction factor
             for (var v = 0; v <= 0.99; v += 0.01) {
                 var contraction = Math.sqrt(1 - v * v);
                 data.addRow([v, contraction]);
             }
             
             var options = {
-                title: 'Length Contraction Factor (1/γ) vs Velocity (v/c)',
+                title: 'Length Contraction: L\' = L√(1-v²/c²)',
                 width: '100%',
                 height: 350,
                 backgroundColor: 'transparent',
-                titleTextStyle: {color: '#3498db', fontSize: 18},
+                titleTextStyle: {color: '#D4AF37', fontSize: 16, fontName: 'Cinzel'},
                 hAxis: {
                     title: 'Velocity (fraction of light speed)',
-                    titleTextStyle: {color: '#e0e0e0'},
-                    textStyle: {color: '#e0e0e0'},
-                    gridlines: {color: '#2c3e50'}
+                    titleTextStyle: {color: '#7A918D'},
+                    textStyle: {color: '#7A918D'},
+                    gridlines: {color: '#1A1A1A'}
                 },
                 vAxis: {
-                    title: 'Length Contraction Factor (1/γ)',
-                    titleTextStyle: {color: '#e0e0e0'},
-                    textStyle: {color: '#e0e0e0'},
-                    gridlines: {color: '#2c3e50'}
+                    title: 'Length Contraction Factor',
+                    titleTextStyle: {color: '#7A918D'},
+                    textStyle: {color: '#7A918D'},
+                    gridlines: {color: '#1A1A1A'}
                 },
-                legend: {textStyle: {color: '#e0e0e0'}},
-                colors: ['#1abc9c'],
-                curveType: 'function'
+                legend: {textStyle: {color: '#F5F1E6'}},
+                colors: ['#7A918D'],
+                curveType: 'function',
+                lineWidth: 3
             };
             
             var chart = new google.visualization.LineChart(document.getElementById('length-contraction-chart'));
             chart.draw(data, options);
         }
         
-        // 3. Relativistic Energy Chart
         function drawEnergyChart() {
             var data = new google.visualization.DataTable();
-            data.addColumn('number', 'Velocity (fraction of c)');
-            data.addColumn('number', 'Relativistic Energy (E/E₀)');
+            data.addColumn('number', 'Velocity (v/c)');
+            data.addColumn('number', 'Energy Ratio (E/E₀)');
             
-            // Generate data points for relativistic energy
             for (var v = 0; v <= 0.99; v += 0.01) {
                 var gamma = 1 / Math.sqrt(1 - v * v);
                 data.addRow([v, gamma]);
             }
             
             var options = {
-                title: 'Relativistic Energy Increase (E = γmc²)',
+                title: 'Relativistic Energy: E = γmc²',
                 width: '100%',
                 height: 350,
                 backgroundColor: 'transparent',
-                titleTextStyle: {color: '#3498db', fontSize: 18},
+                titleTextStyle: {color: '#D4AF37', fontSize: 16, fontName: 'Cinzel'},
                 hAxis: {
                     title: 'Velocity (fraction of light speed)',
-                    titleTextStyle: {color: '#e0e0e0'},
-                    textStyle: {color: '#e0e0e0'},
-                    gridlines: {color: '#2c3e50'}
+                    titleTextStyle: {color: '#7A918D'},
+                    textStyle: {color: '#7A918D'},
+                    gridlines: {color: '#1A1A1A'}
                 },
                 vAxis: {
                     title: 'Energy Ratio (E/E₀)',
-                    titleTextStyle: {color: '#e0e0e0'},
-                    textStyle: {color: '#e0e0e0'},
-                    gridlines: {color: '#2c3e50'}
+                    titleTextStyle: {color: '#7A918D'},
+                    textStyle: {color: '#7A918D'},
+                    gridlines: {color: '#1A1A1A'}
                 },
-                legend: {textStyle: {color: '#e0e0e0'}},
-                colors: ['#f39c12'],
-                curveType: 'function'
+                legend: {textStyle: {color: '#F5F1E6'}},
+                colors: ['#D4AF37'],
+                curveType: 'function',
+                lineWidth: 3
             };
             
             var chart = new google.visualization.LineChart(document.getElementById('energy-chart'));
@@ -770,7 +902,7 @@
             var colorButton = document.getElementById("colorButton");
             if (colorButton) {
                 colorButton.addEventListener("click", function() {
-                    var colors = ['#3498db', '#e74c3c', '#1abc9c', '#f39c12', '#9b59b6', '#34495e'];
+                    var colors = ['#B5838D', '#7A918D', '#D4AF37', '#8B4513', '#0A1931'];
                     var randomColor = colors[Math.floor(Math.random() * colors.length)];
                     colorButton.style.background = `linear-gradient(135deg, ${randomColor}, ${darkenColor(randomColor, 20)})`;
                 });
@@ -783,9 +915,9 @@
                 alertButton.addEventListener("click", function() {
                     var inputText = textInput.value.trim();
                     if (inputText === "") {
-                        alert("Please enter some text first! 🚀");
+                        alert("Please enter some text first.");
                     } else {
-                        alert("You entered: " + inputText + "\n\n⚡ Relativity in action!");
+                        alert("You entered: " + inputText);
                     }
                 });
             }
@@ -796,7 +928,7 @@
             if (generateButton && randomNumberDisplay) {
                 generateButton.addEventListener("click", function() {
                     var randomNumber = Math.floor(Math.random() * 100) + 1;
-                    randomNumberDisplay.textContent = "Random Number: " + randomNumber + " (Like particles at near-light speeds!)";
+                    randomNumberDisplay.textContent = "Random Number: " + randomNumber;
                 });
             }
             
@@ -804,7 +936,6 @@
             getLastUpdatedTime();
         });
         
-        // Helper function to darken colors
         function darkenColor(color, percent) {
             var num = parseInt(color.replace("#", ""), 16),
                 amt = Math.round(2.55 * percent),
@@ -821,113 +952,84 @@
         // ============================================
         
         async function getLastUpdatedTime() {
-            // Replace with your GitHub username and repository
             const username = 'YOUR_GITHUB_USERNAME';
             const repo = 'YOUR_REPOSITORY_NAME';
             
             const url = `https://api.github.com/repos/${username}/${repo}/commits`;
             
             try {
-                const response = await fetch(url, {
-                    method: 'GET',
-                    headers: { 
-                        "Accept": 'application/vnd.github.v3+json'
-                    }
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`Error fetching date: ${response.status}`);
-                }
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok');
                 
                 const commits = await response.json();
                 if (commits && commits.length > 0) {
                     const lastCommitDate = new Date(commits[0].commit.committer.date);
                     document.getElementById('last-updated').innerText = 
-                        `Last Modified Time: ${lastCommitDate.toLocaleString()} 🕒`;
-                } else {
-                    document.getElementById('last-updated').innerText = 'No commits found in the repository.';
+                        `Last Modified: ${lastCommitDate.toLocaleString()}`;
                 }
             } catch (error) {
                 console.error('Error:', error);
                 document.getElementById('last-updated').innerText = 
-                    'Error fetching update time. Please check repository details.';
+                    'Set GitHub username/repo in code';
             }
         }
         
         async function verifyLastUpdatedTime() {
-            document.getElementById('last-updated').innerText = 'Verifying... ⚡';
+            document.getElementById('last-updated').innerText = 'Verifying...';
             await getLastUpdatedTime();
-            alert('Last modified time verified from GitHub API! ✅\n\nSubmission validated for assessment.');
+            alert('Timestamp verified from GitHub API.');
         }
         
         // ============================================
-        // WORD COUNT FEATURE
+        // WORD COUNT FEATURE (Excluding Abstract and Tables)
         // ============================================
         
         function calculateWordCount() {
-            // Get all paragraphs from main content sections
-            const sections = document.querySelectorAll('.content-section:not(.references):not(.js-features)');
-            let totalWords = 0;
-            let sectionCounts = [];
+            // Exclude abstract and tables from word count
+            const sectionsToCount = [
+                'introduction',
+                'principles', 
+                'time-dilation',
+                'length-contraction',
+                'electromagnetic',
+                'applications'
+            ];
             
-            sections.forEach((section, index) => {
-                const text = section.textContent;
-                const words = text.trim().split(/\s+/).length;
-                totalWords += words;
-                
-                // Get section title
-                const title = section.querySelector('h3')?.textContent || `Section ${index + 1}`;
-                sectionCounts.push({ title, words });
+            let totalWords = 0;
+            let sectionDetails = [];
+            
+            sectionsToCount.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    // Exclude tables from word count
+                    const sectionClone = section.cloneNode(true);
+                    const tables = sectionClone.querySelectorAll('table');
+                    tables.forEach(table => table.remove());
+                    
+                    const text = sectionClone.textContent;
+                    const words = text.trim().split(/\s+/).length;
+                    totalWords += words;
+                    
+                    const title = section.querySelector('h3')?.textContent || sectionId;
+                    sectionDetails.push({ title, words });
+                }
             });
             
-            // Display results
             const display = document.getElementById('totalWordCount');
-            let html = `<strong>Total Article Words: ${totalWords}</strong><br><br>`;
+            let html = `<strong>Total Words (excluding abstract & tables): ${totalWords}</strong><br><br>`;
             html += '<strong>Section Breakdown:</strong><br>';
-            sectionCounts.forEach(item => {
+            sectionDetails.forEach(item => {
                 html += `${item.title}: ${item.words} words<br>`;
             });
-            html += `<br><em>✅ Within required 800-1000 word range: ${totalWords >= 800 && totalWords <= 1000 ? 'YES' : 'NO'}</em>`;
+            
+            // Check if within required range
+            const withinRange = totalWords >= 800 && totalWords <= 1000;
+            html += `<br><em style="color: ${withinRange ? '#7A918D' : '#B5838D'}">`;
+            html += `${withinRange ? '✅' : '⚠️'} Within required 800-1000 word range: ${withinRange ? 'YES' : 'NO'}`;
+            html += `</em>`;
             
             display.innerHTML = html;
         }
-        
-        // ============================================
-        // STAR FIELD ANIMATION
-        // ============================================
-        
-        function createStarField() {
-            const starField = document.querySelector('.star-field');
-            if (!starField) return;
-            
-            // Create stars
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.style.position = 'absolute';
-                star.style.width = Math.random() * 3 + 'px';
-                star.style.height = star.style.width;
-                star.style.background = 'white';
-                star.style.borderRadius = '50%';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.opacity = Math.random() * 0.8 + 0.2;
-                star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite alternate`;
-                starField.appendChild(star);
-            }
-            
-            // Add CSS for twinkling animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes twinkle {
-                    0% { opacity: 0.2; }
-                    100% { opacity: 0.8; }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-        
-        // Initialize star field on load
-        window.addEventListener('load', createStarField);
         
         // Resize charts on window resize
         window.addEventListener('resize', function() {
