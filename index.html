@@ -3,50 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cosmic Relativity | Dark Academia Study</title>
+    <title>Cosmic Relativity: Time Dilation & Length Contraction</title>
     
-    <!-- Google Fonts for Dark Academia aesthetic -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=Cinzel:wght@400;500;600&family=Inconsolata:wght@300;400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <!-- Google Charts API -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
-    <!-- Dark Academia Space Aesthetic CSS -->
+    <!-- Galaxy Theme CSS -->
     <style>
-        /* ===== DARK ACADEMIA SPACE THEME ===== */
+        /* Galaxy Theme Variables */
         :root {
-            --parchment: #F5F1E6;
-            --old-paper: #E8E0D0;
-            --dusty-rose: #B5838D;
-            --sage-green: #7A918D;
-            --midnight-blue: #0A1931;
-            --deep-space: #040D21;
-            --star-gold: #D4AF37;
-            --moon-silver: #C0C0C0;
-            --ink-black: #1A1A1A;
-            --aged-leather: #8B4513;
-            --vellum: #FAF3E0;
-            --constellation: rgba(212, 175, 55, 0.15);
+            --deep-space: #0B0B1D;
+            --nebula-purple: #7B1FA2;
+            --star-blue: #1A237E;
+            --cosmic-pink: #D81B60;
+            --galaxy-teal: #00695C;
+            --star-white: #E3F2FD;
+            --neon-blue: #00B0FF;
+            --dark-matter: #01010A;
         }
         
-        /* Base Styles */
+        /* Global Styles */
         body {
-            font-family: 'Crimson Pro', Georgia, serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.8;
-            color: var(--parchment);
+            color: var(--star-white);
             background: 
-                linear-gradient(135deg, var(--deep-space) 0%, var(--midnight-blue) 100%),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><pattern id="stars" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="20" cy="20" r="0.3" fill="%23D4AF37" opacity="0.7"/><circle cx="50" cy="80" r="0.2" fill="%23D4AF37" opacity="0.6"/><circle cx="80" cy="30" r="0.4" fill="%23D4AF37" opacity="0.8"/><circle cx="10" cy="90" r="0.15" fill="%23C0C0C0" opacity="0.5"/><circle cx="90" cy="60" r="0.25" fill="%23C0C0C0" opacity="0.6"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+                linear-gradient(135deg, var(--deep-space) 0%, var(--star-blue) 100%),
+                radial-gradient(circle at 20% 30%, var(--nebula-purple) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, var(--cosmic-pink) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, var(--galaxy-teal) 0%, transparent 50%);
             background-attachment: fixed;
             margin: 0;
             padding: 20px;
-            position: relative;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
         
-        /* Parchment Texture Overlay */
+        /* Star Field Effect */
         body::before {
             content: "";
             position: fixed;
@@ -54,240 +51,252 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                linear-gradient(rgba(139, 69, 19, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 69, 19, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, white, transparent),
+                radial-gradient(1px 1px at 40px 70px, white, transparent),
+                radial-gradient(2px 2px at 50px 160px, white, transparent),
+                radial-gradient(1px 1px at 90px 40px, white, transparent),
+                radial-gradient(2px 2px at 130px 80px, white, transparent),
+                radial-gradient(1px 1px at 160px 120px, white, transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
             pointer-events: none;
             z-index: -1;
+            animation: twinkle 4s infinite alternate;
         }
         
-        /* Main Container - Vintage Book Layout */
-        .academic-container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: rgba(26, 26, 26, 0.85);
-            border-radius: 4px;
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+        
+        /* Main Container */
+        .galaxy-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: rgba(11, 11, 29, 0.85);
+            border-radius: 10px;
             padding: 40px;
-            box-shadow: 
-                0 10px 40px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        /* Decorative Border */
-        .academic-container::before {
-            content: "";
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            pointer-events: none;
+            border: 1px solid rgba(123, 31, 162, 0.3);
+            box-shadow: 
+                0 0 30px rgba(123, 31, 162, 0.2),
+                0 0 60px rgba(26, 35, 126, 0.1),
+                inset 0 0 20px rgba(0, 176, 255, 0.1);
         }
         
         /* Header Styling */
-        .academic-header {
+        .galaxy-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             position: relative;
-            padding-bottom: 30px;
+            padding-bottom: 20px;
         }
         
-        .academic-header::after {
+        .galaxy-header::after {
             content: "";
             position: absolute;
             bottom: 0;
             left: 25%;
             right: 25%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--star-gold), transparent);
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--neon-blue), 
+                var(--cosmic-pink), 
+                var(--neon-blue), 
+                transparent);
         }
         
         .university-banner {
             max-width: 600px;
-            margin: 0 auto 30px;
-            border-radius: 2px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            margin: 0 auto 20px;
+            border-radius: 5px;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 176, 255, 0.5);
         }
         
         h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8em;
-            font-weight: 600;
-            color: var(--star-gold);
+            color: var(--neon-blue);
+            font-size: 2.5em;
             margin: 20px 0;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, var(--neon-blue), var(--cosmic-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6em;
-            color: var(--sage-green);
-            margin: 30px 0 15px;
-            border-bottom: 1px solid rgba(122, 145, 141, 0.3);
-            padding-bottom: 8px;
+            color: var(--star-white);
+            font-size: 1.5em;
+            margin: 15px 0;
         }
         
         h3 {
-            font-family: 'Cinzel', serif;
+            color: var(--neon-blue);
             font-size: 1.3em;
-            color: var(--dusty-rose);
             margin: 25px 0 15px;
-            position: relative;
-            padding-left: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(0, 176, 255, 0.3);
         }
         
-        h3::before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            color: var(--star-gold);
-        }
-        
-        /* Paragraph Styling */
-        p {
-            margin-bottom: 1.5em;
-            text-align: justify;
-            font-size: 1.1em;
-        }
-        
-        .abstract-text {
-            font-style: italic;
-            background: rgba(245, 241, 230, 0.05);
+        /* Table of Contents */
+        .toc-section {
+            background: rgba(26, 35, 126, 0.3);
             padding: 25px;
-            border-left: 3px solid var(--dusty-rose);
-            margin: 25px 0;
-            border-radius: 0 4px 4px 0;
-        }
-        
-        .thought-experiment {
-            background: rgba(10, 25, 49, 0.4);
-            padding: 25px;
+            border-radius: 8px;
             margin: 30px 0;
-            border-radius: 4px;
-            border-left: 4px solid var(--star-gold);
-            position: relative;
-            font-style: italic;
+            border: 1px solid rgba(0, 176, 255, 0.2);
+            backdrop-filter: blur(10px);
         }
         
-        .thought-experiment::before {
-            content: "✧";
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: var(--star-gold);
-            font-size: 1.2em;
-        }
-        
-        /* Table of Contents - Library Catalogue Style */
-        .toc-container {
-            background: rgba(10, 25, 49, 0.5);
-            padding: 30px;
-            margin: 40px 0;
-            border-radius: 4px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            position: relative;
-        }
-        
-        .toc-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4em;
-            color: var(--star-gold);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .toc-item {
-            padding: 12px 15px;
-            background: rgba(26, 26, 26, 0.7);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-            border-left: 2px solid transparent;
-        }
-        
-        .toc-item:hover {
-            border-left: 2px solid var(--star-gold);
-            background: rgba(10, 25, 49, 0.8);
-            transform: translateX(5px);
-        }
-        
-        .toc-item a {
-            color: var(--parchment);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .toc-item a::before {
-            content: "📜";
-            margin-right: 10px;
-            opacity: 0.7;
-        }
-        
-        /* MathML and Equations */
-        math {
-            font-family: 'Inconsolata', monospace;
-            font-size: 1.2em;
-            background: rgba(10, 25, 49, 0.6);
-            padding: 15px;
-            margin: 20px auto;
-            display: block;
-            text-align: center;
-            border-radius: 3px;
-            border: 1px solid rgba(122, 145, 141, 0.3);
-            color: var(--star-gold);
-            max-width: 500px;
-        }
-        
-        /* Applications Table - Old Manuscript Style */
-        .applications-table {
+        .toc-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 40px 0;
-            background: rgba(26, 26, 26, 0.7);
-            border: 1px solid rgba(139, 69, 19, 0.3);
+            font-family: 'Space Mono', monospace;
         }
         
-        .applications-table th {
-            background: linear-gradient(135deg, var(--midnight-blue), var(--deep-space));
-            color: var(--star-gold);
-            padding: 15px;
-            text-align: left;
-            font-family: 'Cinzel', serif;
-            font-weight: 500;
-            border-bottom: 2px solid var(--aged-leather);
+        .toc-table tr {
+            border-bottom: 1px solid rgba(227, 242, 253, 0.1);
         }
         
-        .applications-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(122, 145, 141, 0.2);
-        }
-        
-        .applications-table tr:last-child td {
+        .toc-table tr:last-child {
             border-bottom: none;
         }
         
-        .applications-table tr:hover {
-            background: rgba(10, 25, 49, 0.4);
+        .toc-table td {
+            padding: 10px 15px;
         }
         
-        /* References - Bibliography Style */
+        .toc-table a {
+            color: var(--star-white);
+            text-decoration: none;
+            display: block;
+            padding: 8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .toc-table a::before {
+            content: "✦";
+            position: absolute;
+            left: 5px;
+            color: var(--neon-blue);
+        }
+        
+        .toc-table a:hover {
+            background: rgba(0, 176, 255, 0.1);
+            color: var(--neon-blue);
+            transform: translateX(10px);
+            box-shadow: 0 0 10px rgba(0, 176, 255, 0.2);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(11, 11, 29, 0.6);
+            border-radius: 8px;
+            border-left: 4px solid var(--cosmic-pink);
+            border-right: 1px solid rgba(0, 176, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .abstract-box {
+            background: rgba(26, 35, 126, 0.4);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--neon-blue);
+            font-style: italic;
+            margin: 20px 0;
+        }
+        
+        .thought-experiment {
+            background: rgba(123, 31, 162, 0.2);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--galaxy-teal);
+            position: relative;
+        }
+        
+        .thought-experiment::before {
+            content: "🚀";
+            position: absolute;
+            left: -25px;
+            top: 20px;
+            font-size: 1.2em;
+        }
+        
+        /* Tables */
+        .relativity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: rgba(11, 11, 29, 0.8);
+            border: 1px solid rgba(0, 176, 255, 0.3);
+        }
+        
+        .relativity-table th {
+            background: linear-gradient(135deg, var(--nebula-purple), var(--star-blue));
+            color: var(--star-white);
+            padding: 15px;
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .relativity-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(0, 176, 255, 0.2);
+        }
+        
+        .relativity-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .relativity-table tr:hover {
+            background: rgba(0, 176, 255, 0.1);
+        }
+        
+        /* MathML */
+        math {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2em;
+            background: rgba(26, 35, 126, 0.6);
+            padding: 15px;
+            border-radius: 6px;
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            color: var(--neon-blue);
+            border: 1px solid rgba(0, 176, 255, 0.3);
+            max-width: 500px;
+        }
+        
+        /* References */
         .references-section {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(26, 35, 126, 0.4);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border: 1px solid rgba(0, 176, 255, 0.3);
         }
         
         .reference-item {
@@ -298,154 +307,140 @@
         }
         
         .reference-item::before {
-            content: "[•]";
+            content: "•";
             position: absolute;
             left: 0;
-            color: var(--sage-green);
+            color: var(--neon-blue);
+            font-size: 1.5em;
         }
         
         .reference-item a {
-            color: var(--dusty-rose);
+            color: var(--neon-blue);
             text-decoration: none;
-            border-bottom: 1px dotted rgba(181, 131, 141, 0.3);
+            border-bottom: 1px dotted rgba(0, 176, 255, 0.5);
             transition: all 0.3s ease;
         }
         
         .reference-item a:hover {
-            color: var(--star-gold);
-            border-bottom: 1px solid var(--star-gold);
+            color: var(--cosmic-pink);
+            border-bottom: 1px solid var(--cosmic-pink);
         }
         
-        /* Interactive Charts Section */
-        .charts-section {
-            background: rgba(10, 25, 49, 0.5);
+        /* JavaScript Features */
+        .js-features {
+            background: rgba(11, 11, 29, 0.9);
             padding: 30px;
+            border-radius: 10px;
             margin: 40px 0;
-            border-radius: 4px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(123, 31, 162, 0.5);
+            box-shadow: 0 0 20px rgba(123, 31, 162, 0.2);
         }
         
         .chart-container {
             width: 100%;
             height: 400px;
-            background: rgba(26, 26, 26, 0.8);
-            border-radius: 4px;
+            background: rgba(1, 1, 10, 0.9);
+            border-radius: 8px;
             margin: 20px 0;
-            border: 1px solid rgba(122, 145, 141, 0.2);
-        }
-        
-        /* JavaScript Features */
-        .js-features {
-            background: rgba(10, 25, 49, 0.6);
-            padding: 30px;
-            margin: 40px 0;
-            border-radius: 4px;
-            border: 1px solid rgba(122, 145, 141, 0.3);
+            padding: 20px;
+            border: 1px solid rgba(0, 176, 255, 0.2);
         }
         
         .interactive-controls {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 30px;
+            margin: 30px 0;
         }
         
         .control-group {
-            background: rgba(26, 26, 26, 0.7);
+            background: rgba(26, 35, 126, 0.4);
             padding: 20px;
-            border-radius: 4px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 176, 255, 0.2);
         }
         
-        .academic-button {
-            background: linear-gradient(135deg, var(--midnight-blue), var(--deep-space));
-            color: var(--parchment);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+        .galaxy-button {
+            background: linear-gradient(135deg, var(--nebula-purple), var(--star-blue));
+            color: var(--star-white);
+            border: none;
             padding: 12px 24px;
-            border-radius: 3px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95em;
+            border-radius: 4px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9em;
             cursor: pointer;
-            transition: all 0.3s ease;
             margin: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .academic-button:hover {
-            background: linear-gradient(135deg, var(--deep-space), var(--midnight-blue));
-            border-color: var(--star-gold);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .galaxy-button:hover {
+            background: linear-gradient(135deg, var(--star-blue), var(--nebula-purple));
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(123, 31, 162, 0.4);
         }
         
-        .academic-input {
-            background: rgba(26, 26, 26, 0.8);
-            border: 1px solid rgba(122, 145, 141, 0.3);
-            color: var(--parchment);
+        .galaxy-input {
+            background: rgba(11, 11, 29, 0.9);
+            border: 1px solid var(--neon-blue);
+            color: var(--star-white);
             padding: 10px;
-            border-radius: 3px;
-            font-family: 'Inconsolata', monospace;
+            border-radius: 4px;
+            font-family: 'Space Mono', monospace;
             width: 100%;
             margin: 10px 0;
         }
         
-        .academic-input:focus {
+        .galaxy-input:focus {
             outline: none;
-            border-color: var(--star-gold);
+            box-shadow: 0 0 10px rgba(0, 176, 255, 0.3);
         }
         
         .timestamp-display, .wordcount-display {
-            background: rgba(26, 26, 26, 0.8);
+            background: rgba(26, 35, 126, 0.6);
             padding: 15px;
-            border-radius: 3px;
-            border-left: 3px solid var(--sage-green);
+            border-radius: 6px;
             margin: 15px 0;
-            font-family: 'Inconsolata', monospace;
+            font-family: 'Space Mono', monospace;
             font-size: 0.9em;
+            border-left: 3px solid var(--neon-blue);
         }
         
         .wordcount-display {
-            border-left-color: var(--dusty-rose);
+            border-left-color: var(--galaxy-teal);
         }
         
-        /* Separator Lines */
+        /* Horizontal Rules */
         hr {
             border: none;
             height: 1px;
             background: linear-gradient(90deg, 
                 transparent, 
-                rgba(212, 175, 55, 0.3), 
-                rgba(122, 145, 141, 0.3), 
-                rgba(212, 175, 55, 0.3), 
+                var(--neon-blue), 
+                var(--cosmic-pink), 
                 transparent);
             margin: 40px 0;
-        }
-        
-        /* Decorative Elements */
-        .decoration {
-            text-align: center;
-            margin: 30px 0;
-            color: rgba(212, 175, 55, 0.3);
-            font-size: 2em;
-            letter-spacing: 10px;
+            position: relative;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .academic-container {
+            .galaxy-container {
                 padding: 20px;
-                margin: 20px auto;
+                margin: 15px auto;
             }
             
             h1 {
-                font-size: 2em;
-            }
-            
-            .toc-grid {
-                grid-template-columns: 1fr;
+                font-size: 1.8em;
             }
             
             .interactive-controls {
                 grid-template-columns: 1fr;
+            }
+            
+            .toc-table a {
+                padding: 6px;
             }
         }
         
@@ -456,72 +451,87 @@
                 color: black;
             }
             
-            .academic-container {
+            .galaxy-container {
                 box-shadow: none;
                 border: 1px solid #ccc;
+                background: white;
             }
             
-            .academic-button, .academic-input {
+            .galaxy-button, .galaxy-input {
                 display: none;
             }
         }
         
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
         .content-section {
-            animation: fadeIn 0.8s ease-out;
+            animation: float 6s infinite ease-in-out;
         }
         
-        @keyframes starTwinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-        
-        body::after {
-            content: "";
+        /* Decorative Elements */
+        .planet-decoration {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 30%, transparent 10%, rgba(212, 175, 55, 0.03) 20%, transparent 30%),
-                        radial-gradient(circle at 80% 70%, transparent 10%, rgba(122, 145, 141, 0.02) 20%, transparent 30%);
-            pointer-events: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, var(--cosmic-pink), transparent 70%);
+            opacity: 0.1;
             z-index: -1;
-            animation: starTwinkle 4s infinite alternate;
+            animation: float 10s infinite ease-in-out;
+        }
+        
+        .planet-decoration:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 30% 30%, var(--nebula-purple), transparent 70%);
+            animation-delay: 0s;
+        }
+        
+        .planet-decoration:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, var(--neon-blue), transparent 70%);
+            animation-delay: 2s;
         }
     </style>
 </head>
 <body>
-    <div class="academic-container">
-        <!-- Header Section -->
-        <header class="academic-header">
+    <!-- Decorative Planets -->
+    <div class="planet-decoration"></div>
+    <div class="planet-decoration"></div>
+    
+    <div class="galaxy-container">
+        <!-- Header -->
+        <header class="galaxy-header">
             <img src="WebBanner2025.png" alt="University of Surrey" class="university-banner" width="600" height="200">
             <h1>ENG0018 Computer Laboratory 2025/26</h1>
             <h2>Student URN: 6922716</h2>
-            <div class="decoration">✦ ✦ ✦</div>
-            <h1 style="color: var(--star-gold); margin-top: 20px;">Time Dilation & Length Contraction:<br>Cosmic Phenomena in Everyday Life</h1>
+            <h1 style="margin-top: 30px;">Time Dilation & Length Contraction:<br>Cosmic Phenomena in Everyday Life</h1>
         </header>
         
         <!-- Table of Contents -->
-        <div class="toc-container">
-            <div class="toc-title">Table of Contents</div>
-            <div class="toc-grid">
-                <div class="toc-item"><a href="#abstract">Abstract</a></div>
-                <div class="toc-item"><a href="#introduction">Introduction</a></div>
-                <div class="toc-item"><a href="#principles">Fundamental Principles</a></div>
-                <div class="toc-item"><a href="#time-dilation">Time Dilation Experiment</a></div>
-                <div class="toc-item"><a href="#length-contraction">Length Contraction</a></div>
-                <div class="toc-item"><a href="#electromagnetic">Electromagnetic Connection</a></div>
-                <div class="toc-item"><a href="#applications">Modern Applications</a></div>
-                <div class="toc-item"><a href="#references">References</a></div>
-                <div class="toc-item"><a href="#visualizations">Relativity Visualizations</a></div>
-                <div class="toc-item"><a href="#interactive">Interactive Features</a></div>
-            </div>
+        <div class="toc-section">
+            <h3>Table of Contents</h3>
+            <table class="toc-table">
+                <tr><td><a href="#abstract">Abstract</a></td></tr>
+                <tr><td><a href="#introduction">Introduction: Why Einstein's Theories Still Matter Today</a></td></tr>
+                <tr><td><a href="#principles">The Fundamental Principles of Einstein's Theory</a></td></tr>
+                <tr><td><a href="#time-dilation">Visualizing Time Dilation Through the Light Clock Thought Experiment</a></td></tr>
+                <tr><td><a href="#length-contraction">Understanding Length Contraction with a Moving Train</a></td></tr>
+                <tr><td><a href="#electromagnetic">Analysis and Discussion: The Electromagnetic Connection</a></td></tr>
+                <tr><td><a href="#applications">Applications</a></td></tr>
+                <tr><td><a href="#references">References</a></td></tr>
+                <tr><td><a href="#charts">Relativity Charts</a></td></tr>
+                <tr><td><a href="#interactive">Interactive Features</a></td></tr>
+            </table>
         </div>
         
         <hr>
@@ -529,7 +539,7 @@
         <!-- Abstract Section -->
         <section id="abstract" class="content-section">
             <h3>Abstract</h3>
-            <div class="abstract-text">
+            <div class="abstract-box">
                 Inside this article, the abstract concepts of time dilation and length contraction from Einstein's theory of special relativity are explored, where their many different applications are demonstrated not only in fundamental physics but our modern technology today. Whilst Einstein's relativistic theories are only observed at speeds approaching light velocity (approximately 2.998 × 10⁸ ms⁻¹), the implications of special relativity are ingrained into our daily lives through particle physics, global positioning systems and our own understanding of electromagnetism. Through different simple thought experiments, we can visualize how time slows and lengths contract for objects in rapid motion, displaying a universe that is much more intertwined than classical physics suggests. This discussion further highlights how relativity influences electromagnetic forces, whilst challenging our initial notions of what we know about space and time in order to provide a clear display of its necessity to our technology (Einstein, 1905).
             </div>
         </section>
@@ -540,6 +550,7 @@
         <section id="introduction" class="content-section">
             <h3>Introduction: Why Einstein's Theories Still Matter Today</h3>
             <p>The theories that Albert Einstein wrote in 1905 of special relativity fundamentally reshaped our understanding of space, time and motion. Whilst his theories were often perceived as abstract concepts most commonly referring to black holes with very little practical relevance, time dilation and length contraction have evolved from theoretical fascinations to essential components of our modern technology. These relativistic effects explain why our GPS satellites require daily adjustments of 38 microseconds, how particle accelerators such as the Large Hadron Collider at CERN can function, and even explaining why magnets work revealing electromagnetism as a relativistic phenomena (Purcell & Morin, 2013).</p>
+            
             <p>These concepts are detrimental to the world of physics as they challenge the Newtonian assumptions about an absolute, universal time and distances that are thought to be fixed. In a world where the use of technology is becoming increasingly prevalent, and satellite communications and high-speed particle research are on the rise, outruling relativity leads to many drastic errors. Einstein's theories are shown to represent a more accurate depiction of our reality that we know of (Hafele & Keating, 1972).</p>
         </section>
         
@@ -549,6 +560,7 @@
         <section id="principles" class="content-section">
             <h3>The Fundamental Principles of Einstein's Theory</h3>
             <p>Einstein's special relativity relies on two quite simple laws that contradict our classical physics. First, the laws of physics are to be identical in all non-accelerating frames of references. Secondly, the speed of light is constant where c is estimated to be about 3×10⁸ ms⁻¹ regardless of the motion of the light source or the motion of the observer. These principles are shown to have led to world changing consequences where time and space are relative (Einstein, 1905).</p>
+            
             <p>The mathematical principle of relativity lies within the Lorentz transformation equations. Time dilation is expressed in the equation:</p>
             
             <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -637,7 +649,7 @@
             <p>Medical technologies can also benefit from relativity where positron emission tomography (PET) scanners rely on the annihilation of positrons and electrons. This is a process which is governed by relativistic quantum mechanics. Another example is the cathode ray tube and modern particle beam cancer treatments which utilize relativistic particle dynamics.</p>
             
             <h3 style="margin-top: 40px;">Relativistic Effects in Modern Technologies</h3>
-            <table class="applications-table">
+            <table class="relativity-table">
                 <tr>
                     <th>Technology</th>
                     <th>Relativistic Effect</th>
@@ -709,9 +721,8 @@
         <hr>
         
         <!-- Charts Section -->
-        <section id="visualizations" class="content-section charts-section">
-            <h3>Relativity Visualizations</h3>
-            <p>Interactive charts demonstrating relativistic effects:</p>
+        <section id="charts" class="content-section js-features">
+            <h3>Relativity Charts</h3>
             
             <h4>Time Dilation Factor vs Velocity</h4>
             <div id="time-dilation-chart" class="chart-container"></div>
@@ -728,29 +739,28 @@
         <!-- Interactive Features Section -->
         <section id="interactive" class="content-section js-features">
             <h3>Interactive Features</h3>
-            <p>Explore relativistic concepts through interactive elements:</p>
             
             <div class="interactive-controls">
                 <div class="control-group">
                     <h4>Interactive Demonstrations</h4>
-                    <button id="colorButton" class="academic-button">Change Button Colour</button>
-                    <input type="text" id="textInput" class="academic-input" placeholder="Enter text for alert...">
-                    <button id="alertButton" class="academic-button">Show Alert</button>
-                    <button id="generateButton" class="academic-button">Generate Random Number</button>
-                    <p id="randomNumber" style="margin-top: 10px; color: var(--sage-green);"></p>
+                    <button id="colorButton" class="galaxy-button">Change Button Colour</button>
+                    <input type="text" id="textInput" class="galaxy-input" placeholder="Enter text for alert...">
+                    <button id="alertButton" class="galaxy-button">Show Alert</button>
+                    <button id="generateButton" class="galaxy-button">Generate Random Number</button>
+                    <p id="randomNumber" style="margin-top: 10px; color: var(--neon-blue);"></p>
                 </div>
                 
                 <div class="control-group">
                     <h4>Submission Validation</h4>
                     <div id="last-updated" class="timestamp-display">Loading last update time...</div>
-                    <button onclick="verifyLastUpdatedTime()" class="academic-button">Verify Last Modified Time</button>
+                    <button onclick="verifyLastUpdatedTime()" class="galaxy-button">Verify Last Modified Time</button>
                 </div>
                 
                 <div class="control-group">
                     <h4>Article Statistics</h4>
-                    <button onclick="calculateWordCount()" class="academic-button">Calculate Word Count</button>
+                    <button onclick="calculateWordCount()" class="galaxy-button">Calculate Word Count</button>
                     <div id="totalWordCount" class="wordcount-display">Word count will appear here</div>
-                    <p style="font-size: 0.9em; color: var(--sage-green); margin-top: 10px;">
+                    <p style="font-size: 0.9em; color: var(--neon-blue); margin-top: 10px;">
                         <em>Note: Abstract and tables are excluded from word count as per requirements.</em>
                     </p>
                 </div>
@@ -758,9 +768,9 @@
         </section>
         
         <!-- Footer -->
-        <footer style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(122, 145, 141, 0.2);">
-            <p style="font-family: 'Cinzel', serif; color: var(--star-gold);">ENG0018 Computer Laboratory | Dark Academia Space Aesthetic</p>
-            <p style="font-size: 0.9em; color: var(--sage-green);">© 2025 University of Surrey</p>
+        <footer style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(0, 176, 255, 0.3);">
+            <p style="font-family: 'Orbitron', sans-serif; color: var(--neon-blue);">ENG0018 Computer Laboratory | Galaxy Theme</p>
+            <p style="font-size: 0.9em; color: var(--star-white);">© 2025 University of Surrey</p>
         </footer>
     </div>
     
@@ -794,21 +804,21 @@
                 width: '100%',
                 height: 350,
                 backgroundColor: 'transparent',
-                titleTextStyle: {color: '#D4AF37', fontSize: 16, fontName: 'Cinzel'},
+                titleTextStyle: {color: '#00B0FF', fontSize: 16, fontName: 'Orbitron'},
                 hAxis: {
                     title: 'Velocity (fraction of light speed)',
-                    titleTextStyle: {color: '#7A918D'},
-                    textStyle: {color: '#7A918D'},
-                    gridlines: {color: '#1A1A1A'}
+                    titleTextStyle: {color: '#E3F2FD'},
+                    textStyle: {color: '#E3F2FD'},
+                    gridlines: {color: '#1A237E'}
                 },
                 vAxis: {
                     title: 'Time Dilation Factor (γ)',
-                    titleTextStyle: {color: '#7A918D'},
-                    textStyle: {color: '#7A918D'},
-                    gridlines: {color: '#1A1A1A'}
+                    titleTextStyle: {color: '#E3F2FD'},
+                    textStyle: {color: '#E3F2FD'},
+                    gridlines: {color: '#1A237E'}
                 },
-                legend: {textStyle: {color: '#F5F1E6'}},
-                colors: ['#B5838D'],
+                legend: {textStyle: {color: '#E3F2FD'}},
+                colors: ['#D81B60'],
                 curveType: 'function',
                 lineWidth: 3
             };
@@ -832,21 +842,21 @@
                 width: '100%',
                 height: 350,
                 backgroundColor: 'transparent',
-                titleTextStyle: {color: '#D4AF37', fontSize: 16, fontName: 'Cinzel'},
+                titleTextStyle: {color: '#00B0FF', fontSize: 16, fontName: 'Orbitron'},
                 hAxis: {
                     title: 'Velocity (fraction of light speed)',
-                    titleTextStyle: {color: '#7A918D'},
-                    textStyle: {color: '#7A918D'},
-                    gridlines: {color: '#1A1A1A'}
+                    titleTextStyle: {color: '#E3F2FD'},
+                    textStyle: {color: '#E3F2FD'},
+                    gridlines: {color: '#1A237E'}
                 },
                 vAxis: {
                     title: 'Length Contraction Factor',
-                    titleTextStyle: {color: '#7A918D'},
-                    textStyle: {color: '#7A918D'},
-                    gridlines: {color: '#1A1A1A'}
+                    titleTextStyle: {color: '#E3F2FD'},
+                    textStyle: {color: '#E3F2FD'},
+                    gridlines: {color: '#1A237E'}
                 },
-                legend: {textStyle: {color: '#F5F1E6'}},
-                colors: ['#7A918D'],
+                legend: {textStyle: {color: '#E3F2FD'}},
+                colors: ['#7B1FA2'],
                 curveType: 'function',
                 lineWidth: 3
             };
@@ -870,21 +880,21 @@
                 width: '100%',
                 height: 350,
                 backgroundColor: 'transparent',
-                titleTextStyle: {color: '#D4AF37', fontSize: 16, fontName: 'Cinzel'},
+                titleTextStyle: {color: '#00B0FF', fontSize: 16, fontName: 'Orbitron'},
                 hAxis: {
                     title: 'Velocity (fraction of light speed)',
-                    titleTextStyle: {color: '#7A918D'},
-                    textStyle: {color: '#7A918D'},
-                    gridlines: {color: '#1A1A1A'}
+                    titleTextStyle: {color: '#E3F2FD'},
+                    textStyle: {color: '#E3F2FD'},
+                    gridlines: {color: '#1A237E'}
                 },
                 vAxis: {
                     title: 'Energy Ratio (E/E₀)',
-                    titleTextStyle: {color: '#7A918D'},
-                    textStyle: {color: '#7A918D'},
-                    gridlines: {color: '#1A1A1A'}
+                    titleTextStyle: {color: '#E3F2FD'},
+                    textStyle: {color: '#E3F2FD'},
+                    gridlines: {color: '#1A237E'}
                 },
-                legend: {textStyle: {color: '#F5F1E6'}},
-                colors: ['#D4AF37'],
+                legend: {textStyle: {color: '#E3F2FD'}},
+                colors: ['#00B0FF'],
                 curveType: 'function',
                 lineWidth: 3
             };
@@ -902,7 +912,7 @@
             var colorButton = document.getElementById("colorButton");
             if (colorButton) {
                 colorButton.addEventListener("click", function() {
-                    var colors = ['#B5838D', '#7A918D', '#D4AF37', '#8B4513', '#0A1931'];
+                    var colors = ['#7B1FA2', '#1A237E', '#D81B60', '#00695C', '#00B0FF'];
                     var randomColor = colors[Math.floor(Math.random() * colors.length)];
                     colorButton.style.background = `linear-gradient(135deg, ${randomColor}, ${darkenColor(randomColor, 20)})`;
                 });
@@ -915,9 +925,9 @@
                 alertButton.addEventListener("click", function() {
                     var inputText = textInput.value.trim();
                     if (inputText === "") {
-                        alert("Please enter some text first.");
+                        alert("🚀 Please enter some text first!");
                     } else {
-                        alert("You entered: " + inputText);
+                        alert("You entered: " + inputText + "\n\n⚡ Relativity in action!");
                     }
                 });
             }
@@ -952,8 +962,8 @@
         // ============================================
         
         async function getLastUpdatedTime() {
-            const username = 'YOUR_GITHUB_USERNAME';
-            const repo = 'YOUR_REPOSITORY_NAME';
+            const username = 'FEPSFY6922716';
+            const repo = 'FEPSFY6922716';
             
             const url = `https://api.github.com/repos/${username}/${repo}/commits`;
             
@@ -975,9 +985,9 @@
         }
         
         async function verifyLastUpdatedTime() {
-            document.getElementById('last-updated').innerText = 'Verifying...';
+            document.getElementById('last-updated').innerText = 'Verifying... ⚡';
             await getLastUpdatedTime();
-            alert('Timestamp verified from GitHub API.');
+            alert('Timestamp verified from GitHub API! 🚀');
         }
         
         // ============================================
@@ -1001,19 +1011,6 @@
             sectionsToCount.forEach(sectionId => {
                 const section = document.getElementById(sectionId);
                 if (section) {
-                    // Exclude tables from word count
-                    const sectionClone = section.cloneNode(true);
-                    const tables = sectionClone.querySelectorAll('table');
-                    tables.forEach(table => table.remove());
-                    
-                    const text = sectionClone.textContent;
-                    const words = text.trim().split(/\s+/).length;
-                    totalWords += words;
-                    
-                    const title = section.querySelector('h3')?.textContent || sectionId;
-                    sectionDetails.push({ title, words });
-                }
-            });
             
             const display = document.getElementById('totalWordCount');
             let html = `<strong>Total Words (excluding abstract & tables): ${totalWords}</strong><br><br>`;
@@ -1024,7 +1021,7 @@
             
             // Check if within required range
             const withinRange = totalWords >= 800 && totalWords <= 1000;
-            html += `<br><em style="color: ${withinRange ? '#7A918D' : '#B5838D'}">`;
+            html += `<br><em style="color: ${withinRange ? '#00B0FF' : '#D81B60'};">`;
             html += `${withinRange ? '✅' : '⚠️'} Within required 800-1000 word range: ${withinRange ? 'YES' : 'NO'}`;
             html += `</em>`;
             
