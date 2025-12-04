@@ -314,60 +314,34 @@ Additionally, another example of technology which relies on Einstein's relativis
 
 <!-- FIXED WORD COUNT SCRIPT - NOW COUNTS ALL PARAGRAPHS IN EACH SECTION -->
 <script>
-  // New function to count words in ALL paragraphs within a section
-  function countWordsInSection(sectionId) {
-    const section = document.querySelector('h3[id="' + sectionId + '"]');
-    if (!section) return 0;
-    
-    // Get the next .content-text div after this heading
-    let contentDiv = section.nextElementSibling;
-    while (contentDiv && !contentDiv.classList.contains('content-text')) {
-      contentDiv = contentDiv.nextElementSibling;
-    }
-    
-    if (!contentDiv) return 0;
-    
-    // Get all text from all paragraphs in this div
-    let fullText = '';
-    const paragraphs = contentDiv.querySelectorAll('p');
-    paragraphs.forEach(p => {
-      fullText += ' ' + p.textContent;
-    });
-    
-    // Also include any direct text in the div (not in paragraphs)
-    fullText += ' ' + contentDiv.textContent;
-    
-    // Count words
-    const wordArray = fullText.trim().split(/\s+/);
-    return wordArray.length;
+  // Function to calculate and display word count for a specified section
+  function displayWordCount(sectionId) {
+    const text = document.getElementById(sectionId).textContent;
+    const wordArray = text.trim().split(/\s+/);
+    const wordCount = wordArray.length;
+    return wordCount;
   }
 
+  // Function to calculate and display total word count from selected sections
   function displayTotalWordCount() {
-    const sections = [
-      'Introduction',
-      'Principles', 
-      'Dilation',
-      'Contraction',
-      'Analysis',
-      'Applications'
-    ];
+    // YOU NEED TO ADD IDs TO ALL YOUR PARAGRAPHS:
+    // Change this to match ALL paragraph IDs you have
+    const IntroductionCount = displayWordCount("Introduction_InText");
+    const PrinciplesCount = displayWordCount("Principles_InText");
+    const DilationCount = displayWordCount("Dilation_InText");
+    const ContractionCount = displayWordCount("Contraction_InText");
+    const AnalysisCount = displayWordCount("Analysis_InText");
+    const ApplicationsCount = displayWordCount("Applications_InText");
     
-    let totalWordCount = 0;
+    const totalWordCount = IntroductionCount + PrinciplesCount + DilationCount + 
+                           ContractionCount + AnalysisCount + ApplicationsCount;
     
-    sections.forEach(section => {
-      totalWordCount += countWordsInSection(section);
-    });
-    
-    // Check if we're getting a reasonable count
-    console.log('Total word count calculated:', totalWordCount);
-    
-    document.getElementById("totalWordCount").innerText = `Total word count (excluding Abstract and References): ${totalWordCount}`;
+    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
   }
 
-  // Run when page loads
   window.onload = function() {
     getLastUpdatedTime();
-    setTimeout(displayTotalWordCount, 500); // Small delay to ensure all content is loaded
+    displayTotalWordCount();
   };
 </script>
 
