@@ -1,210 +1,213 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Time Dilation and Length Contraction</title>
+    <title>Conference Paper: Time Dilation and Length Contraction</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-        }
-        
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        
-        h1 {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        h2 {
-            color: #3498db;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-        }
-        
-        h3 {
-            color: #2c3e50;
-            margin-top: 30px;
-        }
-        
+        /* Style for tables from H2 worksheet */
         table {
-            width: 100%;
+            font-family: arial, sans-serif;
             border-collapse: collapse;
-            margin: 20px 0;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%;
         }
         
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
+        td, th {
+            border: 1px solid #dddddd;
             text-align: left;
-        }
-        
-        th {
-            background-color: #3498db;
-            color: white;
-            font-weight: bold;
+            padding: 8px;
         }
         
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #dddddd;
         }
         
-        .table-of-contents {
-            background-color: #e8f4f8;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
+        /* Paragraph style with left margin */
+        p.ex1 {
+            margin-left: 50px;
         }
         
-        .table-of-contents ul {
-            list-style-type: none;
-            padding-left: 20px;
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            line-height: 1.6;
         }
         
-        .table-of-contents li {
-            margin: 8px 0;
+        /* Headings */
+        h1, h2, h3 {
+            color: #333;
         }
         
-        .table-of-contents a {
-            text-decoration: none;
-            color: #2980b9;
-            font-weight: bold;
-        }
-        
-        .table-of-contents a:hover {
-            color: #1a5276;
-            text-decoration: underline;
-        }
-        
-        .section-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        #wordCountDisplay {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
+        h2 {
             margin-top: 30px;
-            font-size: 16px;
-            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
         }
         
+        /* Horizontal rule styling */
         hr {
             border: none;
             height: 1px;
-            background: linear-gradient(to right, transparent, #3498db, transparent);
+            background-color: #ccc;
             margin: 40px 0;
         }
         
-        .highlight {
-            background-color: #fff3cd;
-            padding: 2px 4px;
-            border-radius: 3px;
+        /* Table of contents styling */
+        #table-of-contents {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #0066cc;
         }
         
-        .formula {
-            font-family: "Times New Roman", Times, serif;
-            font-style: italic;
-            background-color: #f8f9fa;
-            padding: 10px;
-            border-left: 4px solid #3498db;
-            margin: 15px 0;
+        /* References styling */
+        #references {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        #references pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
     </style>
 </head>
-<body>
-    <h1>Time Dilation and Length Contraction: How Cosmic Phenomena Influence Everyday Life</h1>
+<body style="background-color:#FFFFFF;margin-left:50px;">
     
-    <div class="table-of-contents">
-        <h2>Table of Contents</h2>
-        <ul>
-            <li><a href="#abstract">Abstract</a></li>
-            <li><a href="#introduction">Introduction: Why Einstein's Theories Still Matter Today</a></li>
-            <li><a href="#principles">The Fundamental Principles of Einstein's Theory</a></li>
-            <li><a href="#time-dilation">Visualizing Time Dilation Through the Light Clock Thought Experiment</a></li>
-            <li><a href="#length-contraction">Understanding Length Contraction with a Moving Train</a></li>
-            <li><a href="#electromagnetic">Analysis and Discussion: The Electromagnetic Connection</a></li>
-            <li><a href="#applications">Applications</a></li>
-            <li><a href="#references">References</a></li>
-        </ul>
+    <!-- University Banner - Update with your actual banner URL -->
+    <img src="https://www.surrey.ac.uk/themes/custom/surrey/logo.svg" alt="University of Surrey" width="600" height="200">
+    
+    <!-- Module Title -->
+    <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
+    <h2>Student URN: 6922716</h2>
+    
+    <hr>
+    
+    <!-- Article Title -->
+    <h2 style="font-family:calibri;"><b>Time Dilation and Length Contraction: How Cosmic Phenomena Influence Everyday Life</b></h2>
+    
+    <hr>
+    
+    <!-- Table of Contents -->
+    <div id="table-of-contents">
+        <h3 id="table-of-contents-heading">Table of Contents</h3>
+        <p class="ex1">
+        <table>
+            <tr>
+                <th><h3>Table of contents</h3></th>
+            </tr>
+            <tr>
+                <td><a href="#Abstract">Abstract</a></td>
+            </tr>
+            <tr>
+                <td><a href="#Introduction">Introduction: Why Einstein's Theories Still Matter Today</a></td>
+            </tr>
+            <tr>
+                <td><a href="#Fundamental-Principles">The Fundamental Principles of Einstein's Theory</a></td>
+            </tr>
+            <tr>
+                <td><a href="#Time-Dilation">Visualizing Time Dilation Through the Light Clock Thought Experiment</a></td>
+            </tr>
+            <tr>
+                <td><a href="#Length-Contraction">Understanding Length Contraction with a Moving Train</a></td>
+            </tr>
+            <tr>
+                <td><a href="#Electromagnetic-Connection">Analysis and Discussion: The Electromagnetic Connection</a></td>
+            </tr>
+            <tr>
+                <td><a href="#Applications">Applications</a></td>
+            </tr>
+            <tr>
+                <td><a href="#References">References</a></td>
+            </tr>
+        </table>
+        </p>
     </div>
     
     <hr>
     
-    <!-- Abstract Section (EXCLUDED from word count) -->
-    <div class="section-content">
-        <h2 id="abstract">Abstract</h2>
-        <p>Inside this article, the abstract concepts of time dilation and length contraction from Einstein's theory of special relativity are explored, where their many different applications are demonstrated not only in fundamental physics but our modern technology today. Whilst Einstein's relativistic theories are only observed at speeds approaching light velocity (approximately 2.998 × 10⁸ m/s), the implications of special relativity are ingrained into our daily lives through particle physics, global positioning systems and our own understanding of electromagnetism. Through different simple thought experiments, we can visualize how time slows and lengths contract for objects in rapid motion, displaying a universe that is much more intertwined than classical physics suggests. This discussion further highlights how relativity influences electromagnetic forces, whilst challenging our initial notions of what we know about space and time in order to provide a clear display of its necessity to our technology (Einstein, 1905).</p>
-    </div>
+    <!-- Abstract Section -->
+    <h3 id="Abstract">Abstract</h3>
+    <p class="ex1">
+        <pre>
+Inside this article, the abstract concepts of time dilation and length contraction from Einstein's theory of special relativity are explored, where their many different applications are demonstrated not only in fundamental physics but our modern technology today. Whilst Einstein's relativistic theories are only observed at speeds approaching light velocity (approximately 2.998 × 10⁸ m/s), the implications of special relativity are ingrained into our daily lives through particle physics, global positioning systems and our own understanding of electromagnetism. Through different simple thought experiments, we can visualize how time slows and lengths contract for objects in rapid motion, displaying a universe that is much more intertwined than classical physics suggests. This discussion further highlights how relativity influences electromagnetic forces, whilst challenging our initial notions of what we know about space and time in order to provide a clear display of its necessity to our technology (Einstein, 1905).
+        </pre>
+    </p>
     
     <hr>
     
-    <!-- Introduction Section (INCLUDED in word count) -->
-    <div class="section-content" id="Introduction_InText">
-        <h2 id="introduction">Introduction: Why Einstein's Theories Still Matter Today</h2>
-        <p>The theories that Albert Einstein wrote in 1905 of special relativity fundamentally reshaped our understanding of space, time and motion. Whilst his theories were often perceived as abstract concepts most commonly referring to black holes with very little practical relevance, time dilation and length contraction have evolved from theoretical fascinations to essential components of our modern technology. These relativistic effects explain why our GPS satellites require daily adjustments of 38 microseconds, how particle accelerators such as the Large Hadron Collider at CERN can function, and even explaining why magnets work revealing electromagnetism as a relativistic phenomena (Purcell & Morin, 2013).</p>
-        
-        <p>These concepts are detrimental to the world of physics as they challenge the Newtonian assumptions about an absolute, universal time and distances that are thought to be fixed. In a world where the use of technology is becoming increasingly prevalent, and satellite communications and high-speed particle research are on the rise, outruling relativity leads to many drastic errors. Einstein's theories are shown to represent a more accurate depiction of our reality that we know of (Hafele & Keating, 1972).</p>
-    </div>
+    <!-- Introduction Section -->
+    <h3 id="Introduction">Introduction: Why Einstein's Theories Still Matter Today</h3>
+    <p class="ex1">
+        <pre>
+The theories that Albert Einstein wrote in 1905 of special relativity fundamentally reshaped our understanding of space, time and motion. Whilst his theories were often perceived as abstract concepts most commonly referring to black holes with very little practical relevance, time dilation and length contract have evolved from theoretical fascinations to essential components of our modern technology. These relativistic effects explain why our GPS satellites require daily adjustments of 38 microseconds, how particle accelerators such as the Large Hadron Collider at CERN can function, and even explaining why magnets work revealing electromagnetism as a relativistic phenomena (Purcell & Morin, 2013).
+
+These concepts are detrimental to the world of physics as they challenge the Newtonian assumptions about an absolute, universal time and distances that are thought to be fixed. In a world where the use of technology is becoming increasingly prevalent, and satellite communications and high-speed particle research are on the rise, outruling relativity leads to many drastic errors. Einstein's theories are shown to represent a more accurate depiction of our reality that we know of (Hafele & Keating, 1972).
+        </pre>
+    </p>
     
-    <!-- Principles Section (INCLUDED in word count) -->
-    <div class="section-content" id="Principles_InText">
-        <h2 id="principles">The Fundamental Principles of Einstein's Theory</h2>
-        <p>Einstein's special relativity relies on two quite simple laws that contradict our classical physics. First, the laws of physics are to be identical in all non-accelerating frames of references. Secondly, the speed of a light is constant where c is estimated to be about 3×10⁸ m/s regardless of the motion of the light source or the motion of the observer. These principles are shown to have led to world changing consequences where time and space are relative (Einstein, 1905).</p>
-        
-        <div class="formula">
-            Time dilation: Δt' = Δt/√(1-v²/c²)<br>
-            Length contraction: L' = L√(1-v²/c²)
-        </div>
-        
-        <p>The mathematical principle of relativity lies within the Lorentz transformation equations. Time dilation is expressed in the equation Δt' = Δt/√(1-v²/c²), where Δt' is the dilated time measured by a stationary observer, Δt is the proper time measured by the moving clock, and v is the relative velocity. Likewise, length contraction follows L' = L√(1-v²/c²), where L' is the contracted length measured by a stationary observer and L is the proper length in the object's frame of rest. These equations reveal to us that as velocity approaches the speed of light, time increasingly slows and lengths dramatically shorten within the direction of motion (Resnick, 1968).</p>
-    </div>
+    <hr>
     
-    <!-- Time Dilation Section (INCLUDED in word count) -->
-    <div class="section-content" id="TimeDilation_InText">
-        <h2 id="time-dilation">Visualizing Time Dilation Through the Light Clock Thought Experiment</h2>
-        <p>Time dilation can be hard to visualise so sometimes a thought experiment can help us. Imagine a "light clock" consisting of two parallel mirrors with a photon bouncing vertically between them. Each complete bounce represents one "tick." Now imagine this clock moving horizontally at a speed close to the speed of light. To a stationary observer, the photon must travel a longer, more diagonal path between ticks compared to the vertical path seen by somebody moving with the clock.</p>
-        
-        <p>From the stationary perspective of this thought experiment, the photon travels farther at the same constant speed of light, requiring more time per tick. Thus, the moving clock appears to tick slower therefore demonstrating time dilation. At 87% of light speed, time dilates by a factor of 2. At 99.5% of light speed, time dilates by a factor of 10. For astronauts traveling at these velocities, years can pass on Earth while they experience only months, a phenomenon with substantial implications for future interstellar travel (Griffiths, 2008).</p>
-    </div>
+    <!-- Fundamental Principles Section -->
+    <h3 id="Fundamental-Principles">The Fundamental Principles of Einstein's Theory</h3>
+    <p class="ex1">
+        <pre>
+Einstein's special relativity relies on two quite simple laws that contradict our classical physics. First, the laws of physics are to be identical in all non-accelerating frames of references. Secondly, the speed of a light is constant where c is estimated to be about 3×10⁸ m/s regardless of the motion of the light source or the motion of the observer. These principles are shown to have led to world changing consequences where time and space are relative. (Einstein, 1905).
+
+The mathematical principle of relativity lies within the Lorentz transformation equations. Time dilation is expressed in the equation Δt' = Δt/√(1-v²/c²), where Δt' is the dilated time measured by a stationary observer, Δt is the proper time measured by the moving clock, and v is the relative velocity. Likewise, length contraction follows L' = L√(1-v²/c²), where L' is the contracted length measured by a stationary observer and L is the proper length in the object's frame of rest. These equations reveal to us that as velocity approaches the speed of light, time increasingly slows and lengths dramatically shorten within the direction of motion (Resnick, 1968).
+        </pre>
+    </p>
     
-    <!-- Length Contraction Section (INCLUDED in word count) -->
-    <div class="section-content" id="LengthContraction_InText">
-        <h2 id="length-contraction">Understanding Length Contraction with a Moving Train</h2>
-        <p>Consider a train moving at 0.9c towards a tunnel. From the perspective of anyone observing the tunnel, the moving train only contracts in length according to the equation previously mentioned (L' = L√(1-v²/c²)). A train of about 100 metres at rest may appear to be only 44 metres long whilst moving however this differs from the perspective of the passengers. On the opposing perspective, it is observed as the tunnel contracting towards them instead.</p>
-        
-        <p>This reciprocal length contraction reveals the relativity within events that appear simultaneously in one frame but may not be in another frame. The contraction of the train only occurs along its motion where both its height and width remain the same. This specific requirement towards its direction explains how fast-moving objects don't appear visually squashed to the human observer, where light travels times from different parts of an object creating complex and abstract optical effects that are different from actual physical contraction (Resnick, 1968).</p>
-    </div>
+    <hr>
     
-    <!-- Electromagnetic Section (INCLUDED in word count) -->
-    <div class="section-content" id="Electromagnetic_InText">
-        <h2 id="electromagnetic">Analysis and Discussion: The Electromagnetic Connection</h2>
-        <p>In everyday physics we can see a very fascinating link between relativity and electromagnetism. This can be observed when we consider two parallel wires carrying current in the same direction. Naturally, we would expect them to repel due to like charges, however to our surprise they actually attract due to a phenomenon explained by special relativity.</p>
-        
-        <p>In a stationary frame of the positive ions in the wires, electrons are moving creating an electric current. When we consider the electrons' perspective, the positive ions appear to move backward, contracting in separation due to length contraction which increases positive charge density and creates an electrostatic attraction that we can interpret as magnetism (Purcell & Morin, 2013).</p>
-        
-        <p>The idea that magnetism is electricity viewed from a different inertial frame brings together these forces as different forms of the same electromagnetic interaction. It demonstrates how relativity isn't merely about phenomena in space but is intrinsic to the fundamental forces governing our everyday technology such as electric motors to computer memory storage (Griffiths, 1999).</p>
-    </div>
+    <!-- Time Dilation Section -->
+    <h3 id="Time-Dilation">Visualizing Time Dilation Through the Light Clock Thought Experiment</h3>
+    <p class="ex1">
+        <pre>
+Time dilation can be hard to visualise so sometimes a thought experiment can help us. Imagine a "light clock" consisting of two parallel mirrors with a photon bouncing vertically between them. Each complete bounce represents one "tick." Now imagine this clock moving horizontally at a speed close to the speed of light. To a stationary observer, the photon must travel a longer, more diagonal path between ticks compared to the vertical path seen by somebody moving with the clock.
+
+From the stationary perspective of this thought experiment, the photon travels farther at the same constant speed of light, requiring more time per tick. Thus, the moving clock appears to tick slower therefore demonstrating time dilation. At 87% of light speed, time dilates by a factor of 2. At 99.5% of light speed, time dilates by a factor of 10. For astronauts traveling at these velocities, years can pass on Earth while they experience only months, a phenomenon with substantial implications for future interstellar travel (Griffiths, 2008).
+        </pre>
+    </p>
     
-    <!-- Applications Section (INCLUDED in word count) -->
-    <div class="section-content" id="Applications_InText">
-        <h2 id="applications">Applications</h2>
+    <hr>
+    
+    <!-- Length Contraction Section -->
+    <h3 id="Length-Contraction">Understanding Length Contraction with a Moving Train</h3>
+    <p class="ex1">
+        <pre>
+Consider a train moving at 0.9c towards a tunnel. From the perspective of anyone observing the tunnel, the moving train only contracts in length according to the equation previously mentioned (L' = L√(1-v²/c²)). A train of about 100 metres at rest may appear to be only 44 metres long whilst moving however this differs from the perspective of the passengers. On the opposing perspective, it is observed as the tunnel contracting towards them instead.
+
+This reciprocal length contraction reveals the relativity within events that appear simultaneously in one frame but may not be in another frame. The contraction of the train only occurs along its motion where both its height and width remain the same. This specific requirement towards its direction explains how fast-moving objects don't appear visually squashed to the human observer, where light travels times from different parts of an object creating complex and abstract optical effects that are different from actual physical contraction (Resnick, 1968).
+        </pre>
+    </p>
+    
+    <hr>
+    
+    <!-- Electromagnetic Connection Section -->
+    <h3 id="Electromagnetic-Connection">Analysis and Discussion: The Electromagnetic Connection</h3>
+    <p class="ex1">
+        <pre>
+In everyday physics we can see a very fascinating link between relativity and electromagnetism. This can be observed when we consider two parallel wires carrying current in the same direction. Naturally, we would expect them to repel due to like charges, however to our surprise they actually attract due to a phenomenon explained by special relativity.
+
+In a stationary frame of the positive ions in the wires, electrons are moving creating an electric current. When we consider the electrons' perspective, the positive ions appear to move backward, contracting in separation due to length contraction which increases positive charge density and creates an electrostatic attraction that we can interpret as magnetism (Purcell & Morin, 2013).
+
+The idea that magnetism is electricity viewed from a different inertial frame brings together these forces as different forms of the same electromagnetic interaction. It demonstrates how relativity isn't merely about phenomena in space but is intrinsic to the fundamental forces governing our everyday technology such as electric motors to computer memory storage (Griffiths, 1999).
+        </pre>
+    </p>
+    
+    <hr>
+    
+    <!-- Applications Section -->
+    <h3 id="Applications">Applications</h3>
+    <p class="ex1">
         <p>The GPS otherwise known as Global positioning system, is one of our most common uses of relativity in our day to day lives. GPS satellites orbit the Earth at approximately 14,000 km/h, and experience both special relativistic time dilation (by slowing clocks by 7 microseconds daily) and general relativistic effects from Earth's weaker gravity (by speeding clocks up by 45 microseconds daily). The difference of the 38-microsecond daily correction is necessary in order to achieve true accuracy where without it, errors would accumulate at 10 kilometers daily (Ashby, 2003).</p>
         
         <p>Additionally, another example of technology which relies on Einstein's relativistic effects are particle accelerators such as the Large Hadron Collider. As protons can approach 0.999c where c is the speed of light, their mass effectively increases by a factor of 7,000 times than their regular rest mass due to the equation E=mc², allowing them to carry tremendous amounts of energy in their collisions. Simultaneously, length contraction can enable the 27 kilometre ring to appear much shorter from the protons' perspective, making circular acceleration likely and possible (CERN, 2020).</p>
         
+        <p>Medical technologies can also benefit from relativity where positron emission tomography (PET) scanners rely on the annihilation of positrons and electrons. This is a process which is governed by relativistic quantum mechanics. Another example is the cathode ray tube and modern particle beam cancer treatments which utilize relativistic particle dynamics.</p>
         
-        <h3>Table 1: Relativistic Effects in Modern Technology</h3>
+        <!-- Technology Table -->
+        <p>Table 1: Relativistic Effects in Modern Technology</p>
         <table>
             <tr>
                 <th>Technology</th>
@@ -237,100 +240,50 @@
                 <td>Microsecond trading disadvantages</td>
             </tr>
         </table>
-    </div>
-    
-    <!-- References Section (EXCLUDED from word count) -->
-    <div class="section-content">
-        <h2 id="references">References</h2>
-        <ol>
-            <li>Einstein, A. (1905). On the Electrodynamics of Moving Bodies. <em>Annalen der Physik, 17(10)</em>, 891-921. https://doi.org/10.1002/andp.19053221004</li>
-            <li>Ashby, N. (2003). Relativity in the Global Positioning System. <em>Living Reviews in Relativity, 6(1)</em>, 1-42. https://doi.org/10.12942/lrr-2003-1</li>
-            <li>Purcell, E. M. & Morin, D. J. (2013). <em>Electricity and Magnetism (3rd ed.)</em>. Cambridge University Press. https://doi.org/10.1017/CBO9781139005043</li>
-            <li>Hafele, J. C. & Keating, R. E. (1972). Around-the-World Atomic Clocks: Predicted Relativistic Time Gains. <em>Science, 177(4044)</em>, 166-168. https://doi.org/10.1126/science.177.4044.166</li>
-            <li>Resnick, R. (1968). <em>Introduction to Special Relativity</em>. Wiley & Sons. https://doi.org/10.1119/1.1974297</li>
-            <li>Griffiths, D. J. (2008). <em>Introduction to Elementary Particles (2nd ed.)</em>. Wiley-VCH. https://doi.org/10.1002/9783527618460</li>
-            <li>European Organization for Nuclear Research (CERN). (2020). The Large Hadron Collider: A Marvel of Technology. <em>CERN Publications</em>. https://doi.org/10.5281/zenodo.4009171</li>
-        </ol>
-    </div>
+    </p>
     
     <hr>
     
-    <!-- Word Count Display -->
-    <div id="wordCountDisplay">
-        <h3>Article Word Count</h3>
-        <p id="totalWordCount">Calculating word count...</p>
-    </div>
+    <!-- MathML Example from H2 Worksheet -->
+    <h3>Mathematical Representation</h3>
+    <p class="ex1">
+        <p>Formatting some equations using MathML:</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mrow>
+                <msup><mi>x</mi><mn>2</mn></msup>
+                <mo>+</mo>
+                <mn>4</mn>
+                <mi>x</mi>
+                <mo>+</mo>
+                <mn>4</mn>
+                <mo>=</mo>
+                <mn>0</mn>
+            </mrow>
+        </math>
+    </p>
     
-    <script>
-        // Function to calculate word count for a specific section
-        function calculateSectionWordCount(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (!section) return 0;
-            
-            // Get all text content from the section
-            let text = section.textContent || section.innerText;
-            
-            // Remove any extra whitespace and split into words
-            text = text.trim();
-            
-            // Count words (split by whitespace and filter out empty strings)
-            const words = text.split(/\s+/).filter(word => word.length > 0);
-            
-            return words.length;
-        }
-        
-        // Function to display total word count
-        function displayTotalWordCount() {
-            // List of section IDs to include in word count
-            const sectionsToInclude = [
-                "Introduction_InText",
-                "Principles_InText", 
-                "TimeDilation_InText",
-                "LengthContraction_InText",
-                "Electromagnetic_InText",
-                "Applications_InText"
-            ];
-            
-            let totalWords = 0;
-            let sectionDetails = [];
-            
-            // Calculate word count for each section
-            sectionsToInclude.forEach(sectionId => {
-                const wordCount = calculateSectionWordCount(sectionId);
-                totalWords += wordCount;
-                
-                // Get section name from heading
-                const sectionElement = document.getElementById(sectionId);
-                const heading = sectionElement ? sectionElement.querySelector('h2') : null;
-                const sectionName = heading ? heading.textContent : sectionId;
-                
-                sectionDetails.push({
-                    name: sectionName,
-                    count: wordCount
-                });
-            });
-            
-            // Display the results
-            const wordCountElement = document.getElementById('totalWordCount');
-            
-            let html = `<strong>Total Words (excluding Abstract and References): ${totalWords}</strong><br><br>`;
-            html += `<strong>Breakdown by Section:</strong><br>`;
-            
-            sectionDetails.forEach(section => {
-                html += `• ${section.name}: ${section.count} words<br>`;
-            });
-            
-            html += `<br><em>Note: Abstract and References sections are excluded from the word count as per requirements.</em>`;
-            
-            wordCountElement.innerHTML = html;
-        }
-        
-        // Run word count when page loads
-        document.addEventListener('DOMContentLoaded', displayTotalWordCount);
-        
-        // Also run when page is fully loaded (including images)
-        window.onload = displayTotalWordCount;
-    </script>
+    <hr>
+    
+    <!-- References Section -->
+    <h3 id="References">References</h3>
+    <p class="ex1">
+        <pre>
+Einstein, A. (1905). On the Electrodynamics of Moving Bodies. Annalen der Physik, 17(10), 891-921. https://doi.org/10.1002/andp.19053221004
+
+Ashby, N. (2003). Relativity in the Global Positioning System. Living Reviews in Relativity, 6(1), 1-42. https://doi.org/10.12942/lrr-2003-1
+
+Purcell, E. M. & Morin, D. J. (2013). Electricity and Magnetism (3rd ed.). Cambridge University Press. https://doi.org/10.1017/CBO9781139005043
+
+Hafele, J. C. & Keating, R. E. (1972). Around-the-World Atomic Clocks: Predicted Relativistic Time Gains. Science, 177(4044), 166-168. https://doi.org/10.1126/science.177.4044.166
+
+Resnick, R. (1968). Introduction to Special Relativity. Wiley & Sons. https://doi.org/10.1119/1.1974297
+
+Griffiths, D. J. (2008). Introduction to Elementary Particles (2nd ed.). Wiley-VCH. https://doi.org/10.1002/9783527618460
+
+European Organization for Nuclear Research (CERN). (2020). The Large Hadron Collider: A Marvel of Technology. CERN Publications. https://doi.org/10.5281/zenodo.4009171
+        </pre>
+    </p>
+    
 </body>
 </html>
 
