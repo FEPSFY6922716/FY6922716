@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
-/* ADD THESE NEW STYLES TO FIX THE ISSUES */
 body {
     background-color:#FFFFFF;
     margin: 0 auto; /* Centers page horizontally */
@@ -260,18 +259,10 @@ Additionally, another example of technology which relies on Einstein's relativis
 </div>
 
 <!-- Time Stamp from H3 Worksheet -->
-<div class="content-text" style="text-align:center;">
 <div id="last-updated">Loading last update time...</div>
 <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
     Verify Last Modified Time
 </button>
-</div>
-
-<!-- Word Count from H3 Worksheet -->
-<div class="content-text">
-<p id="totalWordCount"></p>
-</div>
-<hr>
 
 <script>
     async function getLastUpdatedTime() {
@@ -312,6 +303,10 @@ Additionally, another example of technology which relies on Einstein's relativis
     window.onload = getLastUpdatedTime;
 </script>
 
+<!-- Word Count from H3 Worksheet -->
+<p id="totalWordCount"></p>
+<hr>
+
 <script>
   function displayWordCount(sectionId) {
     const text = document.getElementById(sectionId).textContent;
@@ -342,4 +337,3 @@ Additionally, another example of technology which relies on Einstein's relativis
 
 </body>
 </html>
-        
