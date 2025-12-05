@@ -155,7 +155,6 @@ The GPS otherwise known as Global positioning system, is one of our most common 
 </p>
 
 <div id="last-updated">Loading last update time...</div>
-<!-- Verify Button -->
 <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
     Verify Last Modified Time
 </button>
@@ -198,8 +197,7 @@ The GPS otherwise known as Global positioning system, is one of our most common 
 
     window.onload = getLastUpdatedTime;
 </script>
-  
-<!-- Placeholder for total word count -->
+
 <p id="totalWordCount"></p>
 <hr>
 <script>
@@ -228,7 +226,7 @@ The GPS otherwise known as Global positioning system, is one of our most common 
     // Display the total word count
     document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
   }
-  // Run the function for specific sections and display total count when the page loads
+
   window.onload = function() {
     getLastUpdatedTime();
     displayTotalWordCount();
