@@ -153,10 +153,7 @@ The GPS otherwise known as Global positioning system, is one of our most common 
 6. <a id="ref6" href="https://doi.org/10.1002/9783527618460">Griffiths, D. J. (2008). Introduction to Elementary Particles (2nd ed.). Wiley-VCH.</a>
 7. <a id="ref7" href="https://doi.org/10.5281/zenodo.4009171">European Organization for Nuclear Research (CERN). (2020). The Large Hadron Collider: A Marvel of Technology. CERN Publications.</a>
 </p>
- <!-- //////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ////////////////////////////// Adding last update ////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////// -->
-    <!-- Last commit time display -->
+
 <div id="last-updated">Loading last update time...</div>
 <!-- Verify Button -->
 <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
@@ -192,18 +189,16 @@ The GPS otherwise known as Global positioning system, is one of our most common 
             document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
         }
     }
-    // Function to verify the last update time by re-fetching it from the API
+   
     async function verifyLastUpdatedTime() {
         document.getElementById('last-updated').innerText = 'Verifying...';
         await getLastUpdatedTime();
         alert("Last modified time has been successfully verified from GitHub API.");
     }
-    // Initial load to display the time on page load
+
     window.onload = getLastUpdatedTime;
 </script>
- <!-- //////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ////////////////////////////// Word count function ////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////// -->
+  
 <!-- Placeholder for total word count -->
 <p id="totalWordCount"></p>
 <hr>
