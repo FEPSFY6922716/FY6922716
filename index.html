@@ -158,44 +158,54 @@ The GPS otherwise known as Global positioning system, is one of our most common 
 <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
     Verify Last Modified Time
 </button>
+<p id="totalWordCount"></p>
+<hr>
 <script>
-    async function getLastUpdatedTime() {
-        const username = 'FEPSFY6922716';
-        const repo = 'FY6922716';
-      
-        const url = `https://api.github.com/repos/${username}/${repo}/commits`;
-        try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/vnd.github.v3+json',
-                }
-            });
-            if (!response.ok) {
-                throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
-            }
-            const commits = await response.json();
-            if (commits && commits.length > 0) {
-                const lastCommitDate = new Date(commits[0].commit.committer.date);
-              
-                // Displaying the time on load
-                document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
-            } else {
-                document.getElementById('last-updated').innerText = 'No commits found in the repository.';
-            }
-        } catch (error) {
-            console.error('Error fetching the last updated time:', error);
-            document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
-        }
-    }
-   
-    async function verifyLastUpdatedTime() {
-        document.getElementById('last-updated').innerText = 'Verifying...';
-        await getLastUpdatedTime();
-        alert("Last modified time has been successfully verified from GitHub API.");
-    }
+  // Function to calculate and display word count for a specified section
+  function displayWordCount(sectionId) {
+    // Get the text content from the specified section
+    const text = document.getElementById(sectionId).textContent;
+    // Split text into words based on spaces and filter out any empty strings
+    const wordArray = text.trim().split(/\s+/);
+    // Count the words
+    const wordCount = wordArray.length;
+    // Return the word count for summing purposes
+    return wordCount;
+  }
+  
+  function displayTotalWordCount() {
+    // Calculate word count for each section and accumulate the total
+    const IntroductionCount = displayWordCount("Introduction_InText");
+    const PrinciplesCount = displayWordCount("Principles_InText");
+    const DilationCount = displayWordCount("Dilation_InText");
+    const ContractionCount = displayWordCount("Contraction_InText");
+    const AnalysisCount = displayWordCount("Analysis_InText");
+    const ApplicationsCount = displayWordCount("Applications_InText");
+    
 
-    window.onload = getLastUpdatedTime;
+    const totalWordCount = IntroductionCount + PrinciplesCount + DilationCount + 
+                          ContractionCount + AnalysisCount + ApplicationsCount;
+    
+
+    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+    
+   
+    console.log(`Word counts by section:
+      Introduction: ${IntroductionCount}
+      Principles: ${PrinciplesCount}
+      Time Dilation: ${DilationCount}
+      Length Contraction: ${ContractionCount}
+      Analysis: ${AnalysisCount}
+      Applications: ${ApplicationsCount}
+      TOTAL: ${totalWordCount}
+    `);
+  }
+
+
+  window.onload = function() {
+    getLastUpdatedTime();
+    displayTotalWordCount();
+  };
 </script>
 
 <p id="totalWordCount"></p>
