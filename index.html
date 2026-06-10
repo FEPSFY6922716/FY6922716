@@ -202,9 +202,10 @@ The GPS otherwise known as Global positioning system, is one of our most common 
   }
 
 
-  window.onload = function() {
-    getLastUpdatedTime();
-    displayTotalWordCount();
+    <div id="last-updated">Loading last update time...</div>
+    <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
+        Verify Last Modified Time
+    </button>
   };
 </script>
 
@@ -236,7 +237,6 @@ The GPS otherwise known as Global positioning system, is one of our most common 
     // Display the total word count
     document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
   }
-
   };
 </script>
 
