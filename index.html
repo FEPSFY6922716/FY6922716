@@ -214,13 +214,88 @@ The GPS otherwise known as Global positioning system, is one of our most common 
 <hr>
 
 <script>
-  async function getLastUpdatedTime() {
-    const username = 'nr0025';
-    const repo = 'FY0025';
+  function getCurrentGitHubPageDetails() {
+    const hostname = window.location.hostname;
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
 
-    const url = `https://api.github.com/repos/${username}/${repo}/commits?per_page=1`;
+    let username = 'nr0025';
+    let repo = 'FY0025';
+    let filePath = 'index.html';
+
+    if (hostname.endsWith('.github.io')) {
+      username = hostname.replace('.github.io', '');
+
+      if (pathParts.length > 0) {
+        repo = pathParts[0];
+        filePath = pathParts.slice(1).join('/') || 'index.html';
+      } else {
+        repo = `${username}.github.io`;
+        filePath = 'index.html';
+      }
+    }
+
+    return {
+      username: username,
+      repo: repo,
+      filePath: filePath
+    };
+  }
+
+  async function getGitHubPagesSource(username, repo) {
+    try {
+      const pagesUrl = `https://api.github.com/repos/${username}/${repo}/pages`;
+
+      const response = await fetch(pagesUrl, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+
+      if (!response.ok) {
+        return null;
+      }
+
+      const data = await response.json();
+
+      return data.source || null;
+
+    } catch (error) {
+      console.error('Error fetching GitHub Pages source:', error);
+      return null;
+    }
+  }
+
+  async function getLastUpdatedTime() {
+    const lastUpdatedElement = document.getElementById('last-updated');
+
+    const details = getCurrentGitHubPageDetails();
+    const username = details.username;
+    const repo = details.repo;
+    let filePath = details.filePath;
 
     try {
+      const pagesSource = await getGitHubPagesSource(username, repo);
+
+      let branchQuery = '';
+
+      if (pagesSource) {
+        if (pagesSource.branch) {
+          branchQuery = `&sha=${encodeURIComponent(pagesSource.branch)}`;
+        }
+
+        if (pagesSource.path && pagesSource.path !== '/') {
+          const sourceFolder = pagesSource.path.replace(/^\/|\/$/g, '');
+
+          if (!filePath.startsWith(sourceFolder + '/')) {
+            filePath = `${sourceFolder}/${filePath}`;
+          }
+        }
+      }
+
+      const url =
+        `https://api.github.com/repos/${username}/${repo}/commits?path=${encodeURIComponent(filePath)}&per_page=1${branchQuery}`;
+
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -237,27 +312,45 @@ The GPS otherwise known as Global positioning system, is one of our most common 
       if (commits && commits.length > 0) {
         const lastCommitDate = new Date(commits[0].commit.committer.date);
 
-        document.getElementById('last-updated').innerText =
-          `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+        const formattedDate = lastCommitDate.toLocaleString('en-GB', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZoneName: 'short'
+        });
+
+        lastUpdatedElement.innerText = `Last Modified Time: ${formattedDate}`;
+        return true;
+
       } else {
-        document.getElementById('last-updated').innerText =
-          'No commits found in the repository.';
+        lastUpdatedElement.innerText =
+          `No commits found for this page file: ${filePath}`;
+        return false;
       }
 
     } catch (error) {
       console.error('Error fetching the last updated time:', error);
 
-      document.getElementById('last-updated').innerText =
-        'Error fetching update time. Please check the repository details.';
+      lastUpdatedElement.innerText =
+        `Error fetching update time. Using browser file time instead: ${document.lastModified}`;
+
+      return false;
     }
   }
 
   async function verifyLastUpdatedTime() {
     document.getElementById('last-updated').innerText = 'Verifying...';
 
-    await getLastUpdatedTime();
+    const success = await getLastUpdatedTime();
 
-    alert("Last modified time has been successfully verified from GitHub API.");
+    if (success) {
+      alert("Last modified time has been successfully verified from GitHub API.");
+    } else {
+      alert("Could not verify the time from GitHub API. Please check your GitHub repository and file path.");
+    }
   }
 
   function displayWordCount(sectionId) {
@@ -291,15 +384,6 @@ The GPS otherwise known as Global positioning system, is one of our most common 
 
     document.getElementById("totalWordCount").innerText =
       `Total word count: ${totalWordCount}`;
-
-    console.log(`Word counts by section:
-Introduction: ${IntroductionCount}
-Principles: ${PrinciplesCount}
-Time Dilation: ${DilationCount}
-Length Contraction: ${ContractionCount}
-Analysis: ${AnalysisCount}
-Applications: ${ApplicationsCount}
-TOTAL: ${totalWordCount}`);
   }
 
   window.onload = function() {
