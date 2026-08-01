@@ -259,7 +259,11 @@ The GPS otherwise known as Global positioning system, is one of our most common 
             await getLastUpdatedTime();
             alert("Last modified time has been successfully verified from GitHub API.");
         }
-
+function displayWordCount(sectionId) {
+    const text = document.getElementById(sectionId).textContent;
+    const wordArray = text.trim().split(/\s+/);
+    return wordArray.length;
+}
   function displayTotalWordCount() {
     const IntroductionCount = displayWordCount("Introduction_InText");
     const PrinciplesCount = displayWordCount("Principles_InText");
